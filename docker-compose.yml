@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  ns.mys.web:
+    image: ns.mys.web
+    build:
+      context: .\NS.MYS.Web
+      dockerfile: Dockerfile
