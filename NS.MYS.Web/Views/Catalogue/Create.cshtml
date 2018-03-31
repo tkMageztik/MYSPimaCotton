@@ -1,0 +1,99 @@
+﻿@model NS.MYS.Web.Models.Catalogue
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nuevo Catálogo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Observation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Observation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Observation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div id="dropArea">
+                Arrastra tus fotos aquí
+            </div>
+            <h4>Fotos cargadas: </h4>
+            <ul class="list-unstyled" id="uploadList">
+            </ul>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+<style>
+    #dropArea {
+        background: #b5b5b5;
+        border: black dashed 1px;
+        height: 50px;
+        text-align: center;
+        color: #fff;
+        padding-top: 12px;
+    }
+
+    .active-drop {
+        background: #77bafa !important;
+        border: solid 2px blue !important;
+        opacity: .5;
+        color: black !important;
+    }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery.filedrop.js")
+    <script type="text/javascript">
+        $(function () {
+            $('#dropArea').filedrop({
+                url: '@Url.Action("UploadFiles")',
+                allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
+                allowedfileextensions: ['.jpg', '.jpeg', '.png', '.gif'],
+                paramname: 'files',
+                maxfiles: 5,
+                maxfilesize: 5, // in MB
+                dragOver: function () {
+                    $('#dropArea').addClass('active-drop');
+                },
+                dragLeave: function () {
+                    $('#dropArea').removeClass('active-drop');
+                },
+                drop: function () {
+                    $('#dropArea').removeClass('active-drop');
+                },
+                afterAll: function (e) {
+                    $('#dropArea').html('file(s) uploaded successfully');
+                },
+                uploadFinished: function (i, file, response, time) {
+                    $('#uploadList').append('<li class="col-md-4"><img src="/UploadedFiles/0eea77cb-5683-4363-83ec-3d556bfbeecf.jpg" alt="" width="280" height="280"/><div class="help-block"></div></li>')
+                }
+            })
+        })
+    </script>
+}
