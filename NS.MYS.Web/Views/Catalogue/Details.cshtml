@@ -29,8 +29,22 @@
         </dd>
 
     </dl>
+    <dl>
+        <dt>
+            Fotos cargadas:
+        </dt>
+        <dd>
+            <ul class="list-unstyled">
+                @foreach (var item in Model.Photos)
+                {
+                    <li class="col-md-4"><img src="/UploadedFiles/@item.PhotoId" alt="" width="280" height="280" /><div class="help-block"></div></li>
+                }
+            </ul>
+        </dd>
+    </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CatalogueId }) |
+    @*TODO: se ve feo el footer*@
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CatalogueId }) |
     @Html.ActionLink("Regresar", "Index")
 </p>

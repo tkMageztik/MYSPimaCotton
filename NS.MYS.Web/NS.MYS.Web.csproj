@@ -169,6 +169,7 @@
     <Compile Include="Models\Option.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CatalogueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -221,6 +222,7 @@
     <Content Include="Views\Catalogue\Edit.cshtml" />
     <Content Include="Views\Catalogue\Index.cshtml" />
     <Content Include="Views\Catalogue\Catalogue.cshtml" />
+    <Content Include="Views\Shared\PhotoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,10 @@
+﻿
+@if (ViewBag.Photos != null)
+{
+    foreach (var item in ViewBag.Photos)
+    {
+        <li class="col-md-4">@if (ViewBag.EliminaPhoto == true)
+        {<a href="#" onclick="f1('@item.PhotoId'); return false;">x</a>}<img src="/UploadedFiles/@item.PhotoId" alt="" width="280" height="280" /><div class="help-block"></div></li>
+    }
+
+}

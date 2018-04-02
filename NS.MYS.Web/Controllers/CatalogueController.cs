@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using NS.MYS.Web.Data;
 using NS.MYS.Web.Models;
 using System.IO;
+using NS.MYS.Web.ViewModel;
 
 namespace NS.MYS.Web.Controllers
 {
@@ -17,11 +18,11 @@ namespace NS.MYS.Web.Controllers
     {
         private NSMYSWebContext db = new NSMYSWebContext();
 
-        private ICollection<Photo> photos
-        {
-            get { return Session["photos"] as ICollection<Photo>; }
-            set { Session["photos"] = value; }
-        }
+        //private List<Photo> Photos
+        //{
+        //    get { if (Session["photos"] == null) { return new List<Photo>(); } else return Photos; }
+        //    set { Session["photos"] = value; }
+        //}
 
         // GET: Catalogue
         public async Task<ActionResult> Index()
@@ -36,7 +37,13 @@ namespace NS.MYS.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Catalogue catalogue = await db.Catalogues.FindAsync(id);
+
+            //        model.Item = await db.Items.Include(i => i.ItemVerifications)
+            //.FirstOrDefaultAsync(i => i.Id == id.Value);
+
+            Catalogue catalogue = await db.Catalogues.Include(i => i.Photos)
+                .FirstOrDefaultAsync(i => i.CatalogueId == id.Value);
+
             if (catalogue == null)
             {
                 return HttpNotFound();
@@ -59,9 +66,15 @@ namespace NS.MYS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                catalogue.Photos = photos;
-                db.Catalogues.Add(catalogue);
-                await db.SaveChangesAsync();
+                if (Session["photos"] == null) { }
+                else
+                {
+                    db.Photos.AddRange((IEnumerable<Photo>)Session["photos"]);
+                    catalogue.Photos = (ICollection<Photo>)Session["photos"];
+                    db.Catalogues.Add(catalogue);
+                    await db.SaveChangesAsync();
+                    Session["photos"] = null;
+                }
                 return RedirectToAction("Index");
             }
 
@@ -137,23 +150,90 @@ namespace NS.MYS.Web.Controllers
         [HttpPost]
         public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)
         {
-            string guid;
-
-            if (photos == null)
+            List<Photo> photos = null;
+            if (Session["photos"] == null)
             {
                 photos = new List<Photo>();
             }
-
+            else
+            {
+                photos = (List<Photo>)Session["photos"];
+            }
+            string filePath = null;
             foreach (var file in files)
             {
-                guid = Guid.NewGuid().ToString();
-                string filePath = guid + Path.GetExtension(file.FileName);
+                //guid = Guid.NewGuid().ToString();
+                filePath = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 file.SaveAs(Path.Combine(Server.MapPath("~/UploadedFiles"), filePath));
+
                 //Here you can write code for save this information in your database if you want
-                photos.Add(new Photo { PhotoId = guid, Description = "descripción genérica", Order = 0 });
+                photos.Add(new Photo { PhotoId = filePath, Description = "descripción genérica", Order = 0 });
             }
 
-            return Json("file uploaded successfully");
+            Session["photos"] = photos;
+
+            return Json(filePath);
+        }
+
+
+        [HttpPost]
+        public ActionResult DeletePhoto(string photoId)
+        {
+            List<Photo> photos = (List<Photo>)Session["photos"];
+
+            Session["photos"] = photos.Where(x => x.PhotoId != photoId).ToList();
+
+            System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photoId));
+
+            ViewBag.Photos = photos.Where(x => x.PhotoId != photoId).ToList();
+            ViewBag.EliminaPhoto = true;
+            return PartialView("PhotoPartial");
+        }
+
+        public async Task<ActionResult> Catalogue()
+        {
+            //var catalogos = await db.Catalogues.Include(x => x.Photos).ToListAsync();
+            // catalogos.Select(x => new SelectListItem { Value = x.CatalogueId.ToString(), Text = x.Description });
+            CatalogueViewModel catalogueViewModel = new CatalogueViewModel
+            {
+                Catalogues = await db.Catalogues.ToListAsync()
+            };
+            return View(catalogueViewModel);
+        }
+
+        //[HttpPost]
+        public async Task<ActionResult> CatalogoVarios(int selectedUserCatalogueId)
+        {
+            CatalogueViewModel catalogueViewModel = new CatalogueViewModel
+            {
+                Catalogues = await db.Catalogues.Include(i => i.Photos).ToListAsync(),
+                SelectedUserCatalogueId = 10
+
+            };
+
+            Catalogue Catalogues = await db.Catalogues.Include(i => i.Photos).Where(x => x.CatalogueId == selectedUserCatalogueId).FirstOrDefaultAsync();
+
+            ViewBag.Photos = Catalogues.Photos;
+            ViewBag.EliminaPhoto = false;
+
+            //return View(catalogueViewModel);
+            return PartialView("PhotoPartial");
+        }
+
+        //POST: Catalogue/DestroyFiles
+        //TODO: hay que enviarle el antiforgerytoken...
+        //[ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult DestroyFiles()
+        {
+            if (Session["photos"] != null)
+            {
+                foreach (Photo photo in (List<Photo>)Session["photos"])
+                {
+                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
+                }
+            }
+            return Json("Archivos destruídos correctamente");
         }
     }
 }

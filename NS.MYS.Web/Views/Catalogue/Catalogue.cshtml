@@ -1,35 +1,107 @@
-﻿@model IEnumerable<NS.MYS.Web.Models.Catalogue>
+﻿@model NS.MYS.Web.ViewModel.CatalogueViewModel
+@using NS.MYS.Web.Models
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Catalogue";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalle</h2>
+<h2>Catálogo</h2>
 
+<script>
+    //$(document).ready(function () {
+    //    // executes when HTML-Document is loaded and DOM is ready
+    //    //initialize_lang();
+
+
+    //    $("#listbox").attr({ onchange: "cambiaso()" });
+    //});
+
+
+</script>
 <div>
     <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Catálogos:
+        </dt>
+        <dd>
+            <select name="listbox" id="listbox" onchange="cambiaso(this)">
+                <option value="0">
+                    -- Selecciona un Catálogo --
+                </option>
+                @foreach (var item in Model.Catalogues)
+                {
+
+                    <option value="@item.CatalogueId">
+                        @item.Description
+                    </option>
+                }
+            </select>
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Fotos cargadas:
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Observation)*@
+        </dd>
+
+    </dl>
     <dl class="dl-horizontal">
         <dt>
         </dt>
 
         <dd>
-            @*@Html.DisplayFor(model => model.Description)*@
+            @*@if (Model.SelectedUserCatalogueId != 0)
+                {
+                    <ul class="list-unstyled">
+
+                        @foreach (Photo item in Model.Photos.Where(x => x.CatalogueId == Model.SelectedUserCatalogueId).ToList())
+                        {
+                            <li class="col-md-4"><img src="/UploadedFiles/@item.PhotoId" alt="" width="280" height="280" /><div class="help-block"></div></li>
+                        }
+
+                    </ul>
+                }*@
+            <ul id="testt" class="list-unstyled"></ul>
         </dd>
 
     </dl>
-    @*<dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Observation)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Observation)
-            </dd>
-
-        </dl>*@
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.CatalogueId }) |
-        @Html.ActionLink("Regresar", "Index")*@
-</p>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function cambiaso(par) {
+            var t = $(par).val();
+            $.ajax({
+                type: 'POST',
+                url: '/Catalogue/CatalogoVarios?selectedUserCatalogueId=' + t,
+                contentType: "html",
+                //contentType: "application/json; charset=utf-8",
+                //data: { selectedUserCatalogueId: t },
+                //dataType: 'html',
+                error: function (xhr, status, error) {
+                    //show appropriate message
+                    //alert('juan');
+                },
+                success: function (response) {
+                    //show appropriate message
+                    //debugger
+                    $('#testt').empty();
+                    //$('#testt').append('<li class="col-md-4"><img src="/UploadedFiles/' + response + '" alt="" width="280" height="280" /><div class="help-block"></div></li>');
+                    $('#testt').append(response);
+                    //alert(response);
+                    //alert(par);
+                    //alert('success');
+                }
+            });
+        }
+    </script>
+
+}

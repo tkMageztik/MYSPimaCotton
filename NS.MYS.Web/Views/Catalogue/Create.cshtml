@@ -34,11 +34,12 @@
             </div>
             <h4>Fotos cargadas: </h4>
             <ul class="list-unstyled" id="uploadList">
+                @*<li class="col-md-4"><a href="#" onclick="f1(); return false;">x</a><img src="/UploadedFiles/fb02e027-10af-400f-8fc8-fc48ac7756ce.jpg" alt="" width="280" height="280" /><div class="help-block"></div></li>*@
             </ul>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -70,6 +71,33 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/jquery.filedrop.js")
     <script type="text/javascript">
+        var submitted = false;
+
+        function f1(PhotoId) {
+            $.ajax({
+                type: 'POST',
+                url: '/Catalogue/DeletePhoto?PhotoId=' + PhotoId,
+                contentType: "html",
+                //contentType: "application/json; charset=utf-8",
+                //data: { selectedUserCatalogueId: t },
+                //dataType: 'html',
+                error: function (xhr, status, error) {
+                    //show appropriate message
+                    //alert('juan');
+                },
+                success: function (response) {
+                    //show appropriate message
+                    //debugger
+                    $('#uploadList').empty();
+                    //$('#testt').append('<li class="col-md-4"><img src="/UploadedFiles/' + response + '" alt="" width="280" height="280" /><div class="help-block"></div></li>');
+                    $('#uploadList').append(response);
+                    //alert(response);
+                    //alert(par);
+                    //alert('success');
+                }
+            });
+        }
+
         $(function () {
             $('#dropArea').filedrop({
                 url: '@Url.Action("UploadFiles")',
@@ -90,10 +118,43 @@
                 afterAll: function (e) {
                     $('#dropArea').html('file(s) uploaded successfully');
                 },
+                //TODO: aprender a parsear cada elemento del json respsonse y encapsularlo en serializados... a lo teller.
                 uploadFinished: function (i, file, response, time) {
-                    $('#uploadList').append('<li class="col-md-4"><img src="/UploadedFiles/0eea77cb-5683-4363-83ec-3d556bfbeecf.jpg" alt="" width="280" height="280"/><div class="help-block"></div></li>')
+                    $('#uploadList').append('<li class="col-md-4"><a href="#" onclick="f1(\'' + response +'\'); return false;">x</a><img src="/UploadedFiles/' + response + '" alt="" width="280" height="280"/><div class="help-block"></div></li>')
                 }
             })
         })
+
+        window.onbeforeunload = function () {
+            if (!submitted)
+            return "¿Realmente desea salir?, las imágenes precargadas se eliminarán.";
+        };
+
+        $("form").submit(function () {
+            submitted = true;
+        });
+
+        $(window).unload(function () {
+
+            $.ajax
+                ({
+                    type: 'POST',
+                    url: '@Url.Action("DestroyFiles")',
+                    contentType: "application/json; charset=utf-8",
+                    data: { hola: "hola" },
+                    dataType: 'json',
+                    error: function (xhr, status, error) {
+                        //show appropriate message
+                        alert('error');
+                    },
+                    success: function () {
+                        //show appropriate message
+                        alert('success');
+                    }
+                });
+
+        });
+
     </script>
+
 }
