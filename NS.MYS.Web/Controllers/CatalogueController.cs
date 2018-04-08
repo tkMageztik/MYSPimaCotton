@@ -204,13 +204,6 @@ namespace NS.MYS.Web.Controllers
         //[HttpPost]
         public async Task<ActionResult> CatalogoVarios(int selectedUserCatalogueId)
         {
-            CatalogueViewModel catalogueViewModel = new CatalogueViewModel
-            {
-                Catalogues = await db.Catalogues.Include(i => i.Photos).ToListAsync(),
-                SelectedUserCatalogueId = 10
-
-            };
-
             Catalogue Catalogues = await db.Catalogues.Include(i => i.Photos).Where(x => x.CatalogueId == selectedUserCatalogueId).FirstOrDefaultAsync();
 
             ViewBag.Photos = Catalogues.Photos;
