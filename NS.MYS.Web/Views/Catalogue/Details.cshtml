@@ -37,7 +37,14 @@
             <ul class="list-unstyled">
                 @foreach (var item in Model.Photos)
                 {
-                    <li class="col-md-4"><img src="/UploadedFiles/@item.PhotoId" alt="" width="280" height="280" /><div class="help-block"></div></li>
+                    if (HttpContext.Current.IsDebuggingEnabled)
+                    {
+                        <li class="col-md-4"><img src="/UploadedFiles/@item.PhotoId" alt="" width="280" height="280" /><div class="help-block"></div></li>
+                    }
+                    else
+                    {
+                        <li class="col-md-4"><img src="/sicweb/UploadedFiles/@item.PhotoId" alt="" width="280" height="280" /><div class="help-block"></div></li>
+                    }
                 }
             </ul>
         </dd>

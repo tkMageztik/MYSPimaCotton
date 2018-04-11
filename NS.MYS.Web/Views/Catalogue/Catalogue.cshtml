@@ -73,9 +73,14 @@
     </dl>
 </div>
 <div>
-    <a href="http://myspimacotton.pe/">Regresar</a>
+    <a href="http://www.myspimacotton.pe/">Regresar</a>
 </div>
-
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div>
+        @Html.ActionLink("Menú Principal", "Index", "Admin")
+    </div>
+}
 @section Scripts {
 
     <script type="text/javascript">
@@ -84,7 +89,7 @@
             var t = $(par).val();
             $.ajax({
                 type: 'POST',
-                url: '/Catalogue/CatalogoVarios?selectedUserCatalogueId=' + t,
+                url: '@Url.Action("CatalogoVarios", "Catalogue", new { selectedUserCatalogueId = "par" })'.replace("par", t),
                 contentType: "html",
                 //contentType: "application/json; charset=utf-8",
                 //data: { selectedUserCatalogueId: t },

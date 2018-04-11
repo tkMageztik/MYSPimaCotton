@@ -2,16 +2,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
+<div class="row text-center">
     <div class="help-block"></div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4 text-center">
-        @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
-        @Html.ActionLink("Catálogo", "Index", "Catalogue", null, new { @class = "btn btn-primary btn-lg" })
-    </div>
-    <div class="col-md-4">
-
-    </div>
+    @Html.ActionLink("Catálogo", "Index", "Catalogue", null, new { @class = "btn btn-primary btn-lg" })
+</div>
+<div class="row text-center">
+    <div class="help-block"></div>
+    @Html.ActionLink("Manage", "Index", "Manage", null, new { @class = "btn btn-primary btn-lg" })
+</div>
+<div class="row text-center">
+    <div class="help-block"></div>
+    @Html.ActionLink("RolesAdmin", "Index", "RolesAdmin", null, new { @class = "btn btn-primary btn-lg" })
+</div>
+<div class="row text-center">
+    <div class="help-block"></div>
+    @Html.ActionLink("UsersAdmin", "Index", "UsersAdmin", null, new { @class = "btn btn-primary btn-lg" })
 </div>

@@ -73,10 +73,10 @@
     <script type="text/javascript">
         var submitted = false;
 
-        function f1(PhotoId) {
+        function f1(photoId) {
             $.ajax({
                 type: 'POST',
-                url: '/Catalogue/DeletePhoto?PhotoId=' + PhotoId,
+                url: '@Html.Raw(Url.Action("DeletePhoto", "Catalogue", new { photoId = "photoIdPar", view = "Create" }))'.replace("photoIdPar", photoId),
                 contentType: "html",
                 //contentType: "application/json; charset=utf-8",
                 //data: { selectedUserCatalogueId: t },
@@ -100,7 +100,7 @@
 
         $(function () {
             $('#dropArea').filedrop({
-                url: '@Url.Action("UploadFiles")',
+                url: '@Url.Action("UploadFiles",new { view = "Create" })',
                 allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
                 allowedfileextensions: ['.jpg', '.jpeg', '.png', '.gif'],
                 paramname: 'files',
@@ -120,7 +120,7 @@
                 },
                 //TODO: aprender a parsear cada elemento del json respsonse y encapsularlo en serializados... a lo teller.
                 uploadFinished: function (i, file, response, time) {
-                    $('#uploadList').append('<li class="col-md-4"><a href="#" onclick="f1(\'' + response +'\'); return false;">x</a><img src="/UploadedFiles/' + response + '" alt="" width="280" height="280"/><div class="help-block"></div></li>')
+                    $('#uploadList').append('<li class="col-md-4"><a href="#" onclick="f1(\'' + response +'\'); return false;">x</a><img src="../UploadedFiles/' + response + '" alt="" width="280" height="280"/><div class="help-block"></div></li>')
                 }
             })
         })
@@ -135,17 +135,16 @@
         });
 
         $(window).unload(function () {
-
+            if (!submitted)
             $.ajax
                 ({
                     type: 'POST',
-                    url: '@Url.Action("DestroyFiles")',
+                    url: '@Url.Action("DestroyFiles", new { view = "Create" })',
                     contentType: "application/json; charset=utf-8",
-                    data: { hola: "hola" },
-                    dataType: 'json',
                     error: function (xhr, status, error) {
                         //show appropriate message
-                        alert('error');
+                        //alert('error');
+                        //REVISARRR DEVUELVE ERROR
                     },
                     success: function () {
                         //show appropriate message

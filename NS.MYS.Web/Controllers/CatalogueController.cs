@@ -14,6 +14,7 @@ using NS.MYS.Web.ViewModel;
 
 namespace NS.MYS.Web.Controllers
 {
+    [Authorize]
     public class CatalogueController : Controller
     {
         private NSMYSWebContext db = new NSMYSWebContext();
@@ -88,7 +89,11 @@ namespace NS.MYS.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Catalogue catalogue = await db.Catalogues.FindAsync(id);
+            Catalogue catalogue = await db.Catalogues.Include(i => i.Photos)
+                .FirstOrDefaultAsync(i => i.CatalogueId == id.Value);
+
+            Session["photos"] = catalogue.Photos.ToList<Photo>();
+
             if (catalogue == null)
             {
                 return HttpNotFound();
@@ -101,10 +106,39 @@ namespace NS.MYS.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CatalogueId,Description,Observation")] Catalogue catalogue)
+        public async Task<ActionResult> Edit([Bind(Include = "CatalogueId,Description,Observation,Photos")] Catalogue catalogue)
         {
             if (ModelState.IsValid)
             {
+                //TODO: crear transacción
+                if (Session["photosEdit"] != null)
+                {
+                    foreach (Photo photo in (List<Photo>)Session["photosEdit"])
+                    {
+                        photo.CatalogueId = catalogue.CatalogueId;
+                        db.Entry(photo).State = EntityState.Added;
+                    }
+                    Session["photosEdit"] = null;
+                }
+
+                if (Session["tempDeleted"] != null)
+                {
+                    foreach (Photo photo in ((List<Photo>)Session["tempDeleted"]))
+                    {
+                        db.Entry(photo).State = EntityState.Deleted;
+                    }
+                    //await db.SaveChangesAsync();
+                    Session["tempDeleted"] = null;
+                }
+
+                var local = db.Set<Catalogue>()
+                         .Local
+                         .FirstOrDefault(f => f.CatalogueId == catalogue.CatalogueId);
+                if (local != null)
+                {
+                    db.Entry(local).State = EntityState.Detached;
+                }
+
                 db.Entry(catalogue).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -120,6 +154,7 @@ namespace NS.MYS.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Catalogue catalogue = await db.Catalogues.FindAsync(id);
+
             if (catalogue == null)
             {
                 return HttpNotFound();
@@ -132,7 +167,13 @@ namespace NS.MYS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Catalogue catalogue = await db.Catalogues.FindAsync(id);
+            Catalogue catalogue = await db.Catalogues.Include(i => i.Photos).Where(x => x.CatalogueId == id).FirstOrDefaultAsync();
+
+            //TODO incluir transaction
+            foreach (Photo photo in catalogue.Photos)
+            {
+                System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
+            }
             db.Catalogues.Remove(catalogue);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -148,9 +189,11 @@ namespace NS.MYS.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)
+        public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files, string view)
         {
             List<Photo> photos = null;
+            List<Photo> photosEdit = null;
+            string filePath = null;
             if (Session["photos"] == null)
             {
                 photos = new List<Photo>();
@@ -159,7 +202,19 @@ namespace NS.MYS.Web.Controllers
             {
                 photos = (List<Photo>)Session["photos"];
             }
-            string filePath = null;
+
+            if (view == "Edit")
+            {
+                if (Session["photosEdit"] == null)
+                {
+                    photosEdit = new List<Photo>();
+                }
+                else
+                {
+                    photosEdit = (List<Photo>)Session["photosEdit"];
+                }
+            }
+
             foreach (var file in files)
             {
                 //guid = Guid.NewGuid().ToString();
@@ -168,28 +223,64 @@ namespace NS.MYS.Web.Controllers
 
                 //Here you can write code for save this information in your database if you want
                 photos.Add(new Photo { PhotoId = filePath, Description = "descripción genérica", Order = 0 });
+
+                if (view == "Edit")
+                {
+                    photosEdit.Add(new Photo { PhotoId = filePath, Description = "descripción genérica", Order = 0 });
+                }
             }
 
             Session["photos"] = photos;
+            Session["photosEdit"] = photosEdit;
 
             return Json(filePath);
         }
 
 
         [HttpPost]
-        public ActionResult DeletePhoto(string photoId)
+        public ActionResult DeletePhoto(string photoId, string view)
         {
             List<Photo> photos = (List<Photo>)Session["photos"];
 
-            Session["photos"] = photos.Where(x => x.PhotoId != photoId).ToList();
+            //List<Photo> photosEdit = (List<Photo>)Session["photosEdit"];
+            ////TODO: incluir transaccion
+            //if (photosEdit != null)
+            //{
+            //    photosEdit = photosEdit.Where(x => x.PhotoId != photoId).ToList();
+            //    Session["photosEdit"] = photosEdit;
+            //    photos = photos.Concat(photosEdit).ToList();
+            //}
 
-            System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photoId));
+            if (view == "Create")
+            {
+                System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photoId));
+            }
+            else if (view == "Edit")
+            {
+                List<Photo> tempDeleted = null;
+                if (Session["tempDeleted"] != null)
+                {
+                    tempDeleted = (List<Photo>)Session["tempDeleted"];
+                }
+                else
+                {
+                    tempDeleted = new List<Photo>();
+                }
+                tempDeleted.Add(photos.Where(x => x.PhotoId == photoId).FirstOrDefault());
 
-            ViewBag.Photos = photos.Where(x => x.PhotoId != photoId).ToList();
+                Session["tempDeleted"] = tempDeleted;
+            }
+
+            //TODO: incluir transaccion
+            photos = photos.Where(x => x.PhotoId != photoId).ToList();
+            Session["photos"] = photos;
+
+            ViewBag.Photos = photos;
             ViewBag.EliminaPhoto = true;
-            return PartialView("PhotoPartial");
+            return PartialView("_PhotoPartial");
         }
 
+        [AllowAnonymous]
         public async Task<ActionResult> Catalogue()
         {
             //var catalogos = await db.Catalogues.Include(x => x.Photos).ToListAsync();
@@ -202,6 +293,7 @@ namespace NS.MYS.Web.Controllers
         }
 
         //[HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> CatalogoVarios(int selectedUserCatalogueId)
         {
             Catalogue Catalogues = await db.Catalogues.Include(i => i.Photos).Where(x => x.CatalogueId == selectedUserCatalogueId).FirstOrDefaultAsync();
@@ -210,23 +302,39 @@ namespace NS.MYS.Web.Controllers
             ViewBag.EliminaPhoto = false;
 
             //return View(catalogueViewModel);
-            return PartialView("PhotoPartial");
+            return PartialView("_PhotoPartial");
         }
 
         //POST: Catalogue/DestroyFiles
         //TODO: hay que enviarle el antiforgerytoken...
         //[ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult DestroyFiles()
+        public ActionResult DestroyFiles(string view)
         {
-            if (Session["photos"] != null)
+            if (view == "Edit")
             {
-                foreach (Photo photo in (List<Photo>)Session["photos"])
+                if (Session["photosEdit"] != null)
                 {
-                    System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
+                    foreach (Photo photo in (List<Photo>)Session["photosEdit"])
+                    {
+                        System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
+                    }
+                    Session["photosEdit"] = null;
+                }
+
+            }
+            else if (view == "Create")
+            {
+                if (Session["photos"] != null)
+                {
+                    foreach (Photo photo in (List<Photo>)Session["photos"])
+                    {
+                        System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
+                    }
+                    Session["photos"] = null;
                 }
             }
-            return Json("Archivos destruídos correctamente");
+            return Json("Archivos destruidos correctamente");
         }
     }
 }
