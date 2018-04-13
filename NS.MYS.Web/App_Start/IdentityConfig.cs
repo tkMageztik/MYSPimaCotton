@@ -115,7 +115,7 @@ namespace IdentitySample.Models
             var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
             const string name = "jujex_90@hotmail.com";
-            const string password = "mys_8998";
+            const string password = "Mys_8998";
             const string roleName = "Admin";
 
             //Create Role Admin if it does not exist
