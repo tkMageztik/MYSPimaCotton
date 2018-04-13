@@ -1,0 +1,158 @@
+<!-- Parallax 3 -->
+	
+    <section id="parallax-3" class="container-fluid parallax fixed" style="background-image: url(img/parallax/3.jpg)">
+      <p class="parallax-text">Pixel Perfect</p>
+    </section>
+  
+    <!-- Skills -->
+    <section id="skills" class="section-page">
+        <div class="container">
+           <div>
+            <h3 class="text-center">Skills</h3>
+            <div class="col-sm-12">
+              <p class="text-center col-sm-12">
+                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.   
+              </p>
+
+              <div id="skillbar-1" class="col-sm-12">
+                <div class="skillbar clearfix " data-percent="90%">
+                  <div class="skillbar-title"><span>WEB DESIGN</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">90%</div>
+                </div>
+
+                <div class="skillbar clearfix " data-percent="80%">
+                  <div class="skillbar-title"><span>SEO</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">80%</div>
+                </div> 
+
+                <div class="skillbar clearfix " data-percent="70%">
+                  <div class="skillbar-title"><span>WEB MARKETING</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">70%</div>
+                </div>
+              </div>
+
+              <div id="skillbar-2" class="col-sm-12">
+                <div class="skillbar clearfix " data-percent="100%">
+                  <div class="skillbar-title"><span>HTML5</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">100%</div>
+                </div>
+
+                <div class="skillbar clearfix " data-percent="90%">
+                  <div class="skillbar-title"><span>CSS3</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">90%</div>
+                </div> 
+
+                <div class="skillbar clearfix " data-percent="80%">
+                  <div class="skillbar-title"><span>JQUERY</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">80%</div>
+                </div>
+              </div>
+
+              <div id="skillbar-3" class="col-sm-12">
+                <div class="skillbar clearfix " data-percent="86%">
+                  <div class="skillbar-title"><span>WEB DESIGN</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">86%</div>
+                </div>
+
+                <div class="skillbar clearfix " data-percent="93%">
+                  <div class="skillbar-title"><span>SEO</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">93%</div>
+                </div> 
+
+                <div class="skillbar clearfix " data-percent="77%">
+                  <div class="skillbar-title"><span>WEB MARKETING</span></div>
+                  <div class="skillbar-bar"></div>
+                  <div class="skill-bar-percent">77%</div>
+                </div>
+              </div>
+
+              <div id="skillbar-4" class="col-sm-12">
+                <div class="skillbar clearfix " data-percent="88%">
+                  <div class="skillbar-title"><span>HTML5</span></div>
+                  <div class="skillbar-bar primary-4"></div>
+                  <div class="skill-bar-percent">88%</div>
+                </div>
+
+                <div class="skillbar clearfix " data-percent="92%">
+                  <div class="skillbar-title"><span>CSS3</span></div>
+                  <div class="skillbar-bar primary-5"></div>
+                  <div class="skill-bar-percent">92%</div>
+                </div> 
+
+                <div class="skillbar clearfix " data-percent="79%">
+                  <div class="skillbar-title"><span>JQUERY</span></div>
+                  <div class="skillbar-bar primary-6"></div>
+                  <div class="skill-bar-percent">79%</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Parallax 5 -->
+    <section id="parallax-7" class="container-fluid parallax fixed" style="background-image: url(img/parallax/7.jpg)">
+      <p class="parallax-text">Responsive</p>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section-page">
+        <div class="container">
+          <h3 class="text-center">Education</h3>
+           <div>
+            <div class="col-sm-12">
+              <ul class="tmtimeline col-sm-12">
+                  <li>
+                      <div class="tmtime"><span>2013/2014</span></div>
+                      <div class="tmicon"><i class="fa fa-linkedin"></i></div>
+                      <div class="tmlabel">
+                          <h4>Quisque in wisi quis orci tincidunt fermentum</h4>
+                          <p>Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh. Curabitur nulla purus, feugiat id, elementum in, lobortis quis, pede.</p>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="tmtime"><span>2010/2013</span></div>
+                      <div class="tmicon"><i class="fa fa-linkedin"></i></div>
+                      <div class="tmlabel">
+                          <h4>Maecenas tempus dictum libero</h4>
+                          <p>Aliquam et nisl vel ligula consectetuer suscipit. Morbi euismod enim eget neque. Donec sagittis massa. Vestibulum quis augue sit amet ipsum laoreet pretium. Nulla facilisi. Duis tincidunt, felis et luctus placerat, ipsum libero vestibulum sem, vitae elementum wisi ipsum a metus.</p>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="tmtime"><span>2007/2010</span></div>
+                      <div class="tmicon"><i class="fa fa-linkedin"></i></div>
+                      <div class="tmlabel">
+                          <h4>Praesent vitae ligula nec orci pretium vestibulum</h4>
+                          <p>Ut nulla. Vivamus bibendum, nulla ut congue fringilla, lorem ipsum ultricies risus, ut rutrum velit tortor vel purus. In hac habitasse platea dictumst. Duis fermentum, metus sed congue gravida, arcu dui ornare urna, ut imperdiet enim odio dignissim ipsum. Nulla facilisi.</p>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="tmtime"><span>2004/2007</span></div>
+                      <div class="tmicon"><i class="fa fa-linkedin"></i></div>
+                      <div class="tmlabel">
+                          <h4>Nulla porta tempus sapien</h4>
+                          <p>Nulla dui purus, eleifend vel, consequat non, dictum porta, nulla. Duis ante mi, laoreet ut, commodo eleifend, cursus nec, lorem. Aenean eu est. Etiam imperdiet turpis. Praesent nec augue. Curabitur ligula quam, rutrum id, tempor sed, consequat ac, dui.</p>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="tmtime"><span>2003/2004</span></div>
+                      <div class="tmicon"><i class="fa fa-linkedin"></i></div>
+                      <div class="tmlabel">
+                          <h4>Cras aliquam massa ullamcorper sapien</h4>
+                          <p>Nulla dui purus, eleifend vel, consequat non, dictum porta, nulla. Duis ante mi, laoreet ut, commodo eleifend, cursus nec, lorem. Aenean eu est.  Vivamus sodales adipiscing sapien. Vestibulum posuere nulla eget wisi. Integer volutpat ligula eget enim. Suspendisse vitae arcu. Quisque pellentesque.</p>
+                      </div>
+                  </li>
+              </ul>
+            </div>
+          </div> 
+        </div>
+    </section>

@@ -101,7 +101,7 @@
 
         $(function () {
             $('#dropArea').filedrop({
-                url: '@Url.Action("UploadFiles", new { view = "Create" , model = Model })',
+                url: '@Url.Action("UploadFiles", new { view = "Create" })',
                 allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
                 allowedfileextensions: ['.jpg', '.jpeg', '.png', '.gif'],
                 paramname: 'files',
@@ -121,9 +121,7 @@
                 },
                 //TODO: aprender a parsear cada elemento del json respsonse y encapsularlo en serializados... a lo teller.
                 uploadFinished: function (i, file, response, time) {
-
-                    $('#uploadList').append(response);
-                    //$('#uploadList').append('<li class="col-md-4"><a href="#" onclick="f1(\'' + response + '\'); return false;">x</a><img src="../UploadedFiles/' + response + '" alt="" width="280" height="280"/><div class="help-block"></div></li>')
+                    $('#uploadList').append('<li class="col-md-4"><a href="#" onclick="f1(\'' + response + '\'); return false;">x</a><img src="../UploadedFiles/' + response + '" alt="" width="280" height="280"/><div class="help-block"></div></li>')
                 }
             })
         })

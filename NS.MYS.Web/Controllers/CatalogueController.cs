@@ -64,7 +64,7 @@ namespace NS.MYS.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CatalogueId,Description,Observation,Photos")] Catalogue catalogue)
+        public async Task<ActionResult> Create([Bind(Include = "CatalogueId,Description,Observation")] Catalogue catalogue)
         {
             if (ModelState.IsValid)
             {
@@ -197,7 +197,7 @@ namespace NS.MYS.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files, string view, Catalogue model)
+        public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files, string view)
         {
             List<Photo> photos = null;
             List<Photo> photosEdit = null;
@@ -240,10 +240,7 @@ namespace NS.MYS.Web.Controllers
             TempData["photos"] = photos;
             TempData["photosEdit"] = photosEdit;
 
-            //return Json(filePath);
-            ViewBag.Photos = photos;
-            ViewBag.EliminaPhoto = true;
-            return PartialView("_PhotoPartial", model);
+            return Json(filePath);
         }
 
 
