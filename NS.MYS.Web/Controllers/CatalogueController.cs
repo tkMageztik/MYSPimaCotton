@@ -21,8 +21,8 @@ namespace NS.MYS.Web.Controllers
 
         //private List<Photo> Photos
         //{
-        //    get { if (Session["photos"] == null) { return new List<Photo>(); } else return Photos; }
-        //    set { Session["photos"] = value; }
+        //    get { if (TempData["photos"] == null) { return new List<Photo>(); } else return Photos; }
+        //    set { TempData["photos"] = value; }
         //}
 
         // GET: Catalogue
@@ -55,6 +55,7 @@ namespace NS.MYS.Web.Controllers
         // GET: Catalogue/Create
         public ActionResult Create()
         {
+            TempData["photos"] = null;
             return View();
         }
 
@@ -63,18 +64,18 @@ namespace NS.MYS.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CatalogueId,Description,Observation")] Catalogue catalogue)
+        public async Task<ActionResult> Create([Bind(Include = "CatalogueId,Description,Observation,Photos")] Catalogue catalogue)
         {
             if (ModelState.IsValid)
             {
-                if (Session["photos"] == null) { }
+                if (TempData["photos"] == null) { }
                 else
                 {
-                    db.Photos.AddRange((IEnumerable<Photo>)Session["photos"]);
-                    catalogue.Photos = (ICollection<Photo>)Session["photos"];
+                    db.Photos.AddRange((IEnumerable<Photo>)TempData["photos"]);
+                    catalogue.Photos = (ICollection<Photo>)TempData["photos"];
                     db.Catalogues.Add(catalogue);
                     await db.SaveChangesAsync();
-                    Session["photos"] = null;
+                    TempData["photos"] = null;
                 }
                 return RedirectToAction("Index");
             }
@@ -92,7 +93,7 @@ namespace NS.MYS.Web.Controllers
             Catalogue catalogue = await db.Catalogues.Include(i => i.Photos)
                 .FirstOrDefaultAsync(i => i.CatalogueId == id.Value);
 
-            Session["photos"] = catalogue.Photos.ToList<Photo>();
+            TempData["photos"] = catalogue.Photos.ToList<Photo>();
 
             if (catalogue == null)
             {
@@ -111,24 +112,31 @@ namespace NS.MYS.Web.Controllers
             if (ModelState.IsValid)
             {
                 //TODO: crear transacción
-                if (Session["photosEdit"] != null)
+                if (TempData["photosEdit"] != null)
                 {
-                    foreach (Photo photo in (List<Photo>)Session["photosEdit"])
+                    foreach (Photo photo in (List<Photo>)TempData["photosEdit"])
                     {
                         photo.CatalogueId = catalogue.CatalogueId;
                         db.Entry(photo).State = EntityState.Added;
                     }
-                    Session["photosEdit"] = null;
+                    TempData["photosEdit"] = null;
                 }
 
-                if (Session["tempDeleted"] != null)
+                if (TempData["tempDeleted"] != null)
                 {
-                    foreach (Photo photo in ((List<Photo>)Session["tempDeleted"]))
+                    foreach (Photo photo in ((List<Photo>)TempData["tempDeleted"]))
                     {
-                        db.Entry(photo).State = EntityState.Deleted;
+                        Photo photoBD = db.Photos.Where(x => x.PhotoId == photo.PhotoId).FirstOrDefault();
+                        if (photoBD != null)
+                        {
+                            db.Entry(photoBD).State = EntityState.Deleted;
+                        }
+
+                        System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
                     }
+
                     //await db.SaveChangesAsync();
-                    Session["tempDeleted"] = null;
+                    TempData["tempDeleted"] = null;
                 }
 
                 var local = db.Set<Catalogue>()
@@ -189,29 +197,29 @@ namespace NS.MYS.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files, string view)
+        public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files, string view, Catalogue model)
         {
             List<Photo> photos = null;
             List<Photo> photosEdit = null;
             string filePath = null;
-            if (Session["photos"] == null)
+            if (TempData["photos"] == null)
             {
                 photos = new List<Photo>();
             }
             else
             {
-                photos = (List<Photo>)Session["photos"];
+                photos = (List<Photo>)TempData["photos"];
             }
 
             if (view == "Edit")
             {
-                if (Session["photosEdit"] == null)
+                if (TempData["photosEdit"] == null)
                 {
                     photosEdit = new List<Photo>();
                 }
                 else
                 {
-                    photosEdit = (List<Photo>)Session["photosEdit"];
+                    photosEdit = (List<Photo>)TempData["photosEdit"];
                 }
             }
 
@@ -229,25 +237,27 @@ namespace NS.MYS.Web.Controllers
                     photosEdit.Add(new Photo { PhotoId = filePath, Description = "descripción genérica", Order = 0 });
                 }
             }
+            TempData["photos"] = photos;
+            TempData["photosEdit"] = photosEdit;
 
-            Session["photos"] = photos;
-            Session["photosEdit"] = photosEdit;
-
-            return Json(filePath);
+            //return Json(filePath);
+            ViewBag.Photos = photos;
+            ViewBag.EliminaPhoto = true;
+            return PartialView("_PhotoPartial", model);
         }
 
 
         [HttpPost]
         public ActionResult DeletePhoto(string photoId, string view)
         {
-            List<Photo> photos = (List<Photo>)Session["photos"];
+            List<Photo> photos = (List<Photo>)TempData["photos"];
 
-            //List<Photo> photosEdit = (List<Photo>)Session["photosEdit"];
+            //List<Photo> photosEdit = (List<Photo>)TempData["photosEdit"];
             ////TODO: incluir transaccion
             //if (photosEdit != null)
             //{
             //    photosEdit = photosEdit.Where(x => x.PhotoId != photoId).ToList();
-            //    Session["photosEdit"] = photosEdit;
+            //    TempData["photosEdit"] = photosEdit;
             //    photos = photos.Concat(photosEdit).ToList();
             //}
 
@@ -258,22 +268,33 @@ namespace NS.MYS.Web.Controllers
             else if (view == "Edit")
             {
                 List<Photo> tempDeleted = null;
-                if (Session["tempDeleted"] != null)
+                if (TempData["tempDeleted"] != null)
                 {
-                    tempDeleted = (List<Photo>)Session["tempDeleted"];
+                    tempDeleted = (List<Photo>)TempData["tempDeleted"];
                 }
                 else
                 {
                     tempDeleted = new List<Photo>();
                 }
                 tempDeleted.Add(photos.Where(x => x.PhotoId == photoId).FirstOrDefault());
+                TempData["tempDeleted"] = tempDeleted;
 
-                Session["tempDeleted"] = tempDeleted;
+                List<Photo> photosEdit = null;
+                if (TempData["photosEdit"] != null)
+                {
+                    photosEdit = (List<Photo>)TempData["photosEdit"];
+                }
+                else
+                {
+                    photosEdit = new List<Photo>();
+                }
+
+                TempData["photosEdit"] = photosEdit.Where(x => x.PhotoId != photoId).ToList();
             }
 
             //TODO: incluir transaccion
             photos = photos.Where(x => x.PhotoId != photoId).ToList();
-            Session["photos"] = photos;
+            TempData["photos"] = photos;
 
             ViewBag.Photos = photos;
             ViewBag.EliminaPhoto = true;
@@ -313,25 +334,24 @@ namespace NS.MYS.Web.Controllers
         {
             if (view == "Edit")
             {
-                if (Session["photosEdit"] != null)
+                if (TempData["photosEdit"] != null)
                 {
-                    foreach (Photo photo in (List<Photo>)Session["photosEdit"])
+                    foreach (Photo photo in (List<Photo>)TempData["photosEdit"])
                     {
                         System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
                     }
-                    Session["photosEdit"] = null;
+                    TempData["photosEdit"] = null;
                 }
-
             }
             else if (view == "Create")
             {
-                if (Session["photos"] != null)
+                if (TempData["photos"] != null)
                 {
-                    foreach (Photo photo in (List<Photo>)Session["photos"])
+                    foreach (Photo photo in (List<Photo>)TempData["photos"])
                     {
                         System.IO.File.Delete(Path.Combine(Server.MapPath("~/UploadedFiles"), photo.PhotoId));
                     }
-                    Session["photos"] = null;
+                    TempData["photos"] = null;
                 }
             }
             return Json("Archivos destruidos correctamente");
