@@ -25,6 +25,12 @@ namespace IdentitySample
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/catalogue").Include(
+                      "~/Scripts/lightbox.js"));
+
+            bundles.Add(new StyleBundle("~/Content/catalogue").Include(
+                "~/Content/lightbox.css"));
         }
     }
 }

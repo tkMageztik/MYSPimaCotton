@@ -320,7 +320,7 @@ namespace NS.MYS.Web.Controllers
             ViewBag.EliminaPhoto = false;
 
             //return View(catalogueViewModel);
-            return PartialView("_PhotoPartial");
+            return PartialView("_PhotoPartialExternal");
         }
 
         //POST: Catalogue/DestroyFiles

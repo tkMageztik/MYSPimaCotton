@@ -1,5 +1,4 @@
 ﻿@model NS.MYS.Web.ViewModel.CatalogueViewModel
-@using NS.MYS.Web.Models
 
 @{
     ViewBag.Title = "Catalogue";
@@ -67,7 +66,7 @@
 
                     </ul>
                 }*@
-            <ul id="testt" class="list-unstyled"></ul>
+            <ul id="gallery" class="list-unstyled row"></ul>
         </dd>
 
     </dl>
@@ -81,13 +80,16 @@
         @Html.ActionLink("Menú Principal", "Index", "Admin")
     </div>
 }
-@section Scripts {
 
+@section Scripts {
+    @Styles.Render("~/Content/catalogue")
+    @Scripts.Render("~/bundles/catalogue")
     <script type="text/javascript">
 
+        var $j = jQuery.noConflict();
         function cambiaso(par) {
-            var t = $(par).val();
-            $.ajax({
+            var t = $j(par).val();
+            $j.ajax({
                 type: 'POST',
                 url: '@Url.Action("CatalogoVarios", "Catalogue", new { selectedUserCatalogueId = "par" })'.replace("par", t),
                 contentType: "html",
@@ -101,9 +103,9 @@
                 success: function (response) {
                     //show appropriate message
                     //debugger
-                    $('#testt').empty();
-                    //$('#testt').append('<li class="col-md-4"><img src="/UploadedFiles/' + response + '" alt="" width="280" height="280" /><div class="help-block"></div></li>');
-                    $('#testt').append(response);
+                    $j('#gallery').empty();
+                    //$('#gallery').append('<li class="col-md-4"><img src="/UploadedFiles/' + response + '" alt="" width="280" height="280" /><div class="help-block"></div></li>');
+                    $j('#gallery').append(response);
                     //alert(response);
                     //alert(par);
                     //alert('success');

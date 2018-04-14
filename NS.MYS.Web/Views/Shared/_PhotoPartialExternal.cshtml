@@ -9,7 +9,9 @@
 
             @if (HttpContext.Current.IsDebuggingEnabled)
             {
-                <img class="border border-dark" src="/UploadedFiles/@item.PhotoId" alt="@item.Description" width="280" height="280" />
+                <a rel="lightbox[portfolio]" href="/UploadedFiles/@item.PhotoId">
+                    <img class="border border-dark" src="/UploadedFiles/@item.PhotoId" alt="@item.Description" width="280" height="280" />
+                </a>
             }
             else
             {
