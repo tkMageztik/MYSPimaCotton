@@ -49,11 +49,25 @@
 
 	function spanish(){
 		$("#nav_about").text("Sobre Nosotros");
-		$("#nav_services").text("Nuestro Servicios");
+		$("#nav_services").text("Servicios");
 		$("#nav_catalogue").text("Catálogo");
 		$("#nav_portfolio").text("Clientes");
 		$("#nav_contact").text("Contáctanos");
 
+		$("#about-1 h3").html("Sobre Nosotros");
+		$("#about-1 p").html("Somos una empresa familiar y nuestro proyecto empezó en el año 2014, para entonces ya contábamos con mas de 15 años de experiencia en el rubro textil exportador con experiencia en Textil San Cristóbal y Netalco. Decidimos emprender nuestro propio proyecto M & S PIMA COTTON SAC, ese mismo año empezamos a exportar a uno de los principales mercados, ESTADOS UNIDOS.");
+		
+		$("#services h3").html("Servicios");
+		$('#services h4').eq(0).html("Diseño y Moda");
+		$('#services h4').eq(1).html("Producción");
+		$('#services h4').eq(2).html("Calidad y Puntualidad");
+			
+		$('#services p').eq(0).html("Contamos con área de Diseño, con especialistas que analizan las tendencias del mercado para poder lanzar colecciones nuevas que le puedan dar a nuestros clientes la posibilidad de vender NUEVOS DISEÑOS.");
+		$('#services p').eq(1).html("Contamos con una capacidad de producción de 30 mil prendas mensuales, en los diferentes diseños de moda para garantizar a nuestros clientes respuesta rápida a su necesidad.");
+		$('#services p').eq(2).html("Controlamos todos los procesos productivos y tenemos filtros que nos ayudan a obtener un producto de muy buena calidad. Y sobre todo la experiencia en la planificación del flujo productivo hace que nuestros clientes SIEMPRE queden satisfecho con nuestro trabajo.");
+		
+		$("#portfolio h3").html("Clientes");
+		
 		$("#selLang").attr({src: "img/i18n/es-PE.png", alt: "Español"});
 
 		/*$("#spanish").contents().filter(function(){ 
@@ -66,11 +80,26 @@
 	}
 	  
 	function english(){
-		$("#nav_about").text("About");
+		$("#nav_about").text("About us");
 		$("#nav_services").text("Services");
 		$("#nav_catalogue").text("Catalogue");
 		$("#nav_portfolio").text("Customers");
 		$("#nav_contact").text("Contact");
+		
+		$("#about-1 h3").html("About us");
+		$("#about-1 p").html("About");
+		
+		$("#services h3").html("Services");
+		
+		$('#services h4').eq(0).html("b");
+		$('#services h4').eq(1).html("b");
+		$('#services h4').eq(2).html("b");
+		
+		$('#services p').eq(0).html("b");
+		$('#services p').eq(1).html("b");
+		$('#services p').eq(2).html("b");
+		
+		$("#portfolio h3").html("Customers");
 
 		$("#selLang").attr({src: "img/i18n/en-US.png", alt: "English"});
 
@@ -184,25 +213,23 @@
                  </ul>
               </div>
             </div>
-            <!--<div class="about col-sm-6"><img class="img-responsive" src="img/man.png" alt="" /></div>-->
+            <div class="about col-sm-6"><img class="img-responsive" src="img/FOTO DE PORTADA 3.jpeg" alt="" /></div>
             <div class="about col-sm-6"><img class="img-responsive" alt="" /></div>
           </div>
         </div>
       </div>
     </section>
-
+<!--
     <section id="about-2" class="section-page hidden-xs">
       <div class="container-fluid">
         <div class="container">
            <div>
-            <!--<div class="about col-sm-6"><img class="img-responsive" src="img/woman.png" alt="" /></div>-->
+            <!--<div class="about col-sm-6"><img class="img-responsive" src="img/woman.png" alt="" /></div>
             <div class="about col-sm-6">
               <div class="wrap-about">
                 <h3>About</h3>
                 <p>
-                  Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-                  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
-                  Maecenas elementum augue nec nisl. Proin auctor lorem at nibh. Curabitur nulla purus, feugiat id, elementum in, lobortis quis, pede. Vivamus sodales adipiscing sapien.
+                  Somos una empresa familiar y nuestro proyecto empezó en el año 2014, para entonces ya contábamos con mas de 15 años de experiencia en el rubro textil exportador con experiencia de Textil San Cristóbal y Netalco, decidimos emprender nuestro propio proyecto M & S PIMA COTTON SAC, ese mismo año empezamos a exportar a uno de los principales mercados de ESTADOS UNIDOS.
                 </p>
               </div>
             </div>
@@ -210,7 +237,7 @@
         </div>
       </div>
     </section>
-
+-->
     <!-- Parallax 1 -->
     <section id="parallax-1" class="container-fluid parallax fixed" style="background-image: url(img/parallax/1.jpg)">
       <p class="parallax-text">Just for Ambitious</p>
@@ -234,8 +261,8 @@
             </div>
             <div class="about col-sm-4">
               <h4 class="text-center text-uppercase"><i class="fa fa-search"></i> SEO</h4>
-                <div class="easy-pie-chart" data-percent="90">
-                  <span>90<sup>%</sup></span>
+                <div class="easy-pie-chart" data-percent="100">
+                  <span>100<sup>%</sup></span>
                 </div>
               <p class="text-center">
                 Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
@@ -244,8 +271,8 @@
             </div>
             <div class="about col-sm-4">
               <h4 class="text-center text-uppercase"><i class="fa fa-bullhorn"></i> Web Marketing</h4>
-               <div class="easy-pie-chart" data-percent="80">
-                  <span>80<sup>%</sup></span>
+               <div class="easy-pie-chart" data-percent="100">
+                  <span>100<sup>%</sup></span>
                </div>
               <p class="text-center">
                 Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
@@ -270,6 +297,55 @@
 
           <ul id="og-grid" class="og-grid">
             <li>
+              <a href="#" data-largesrc="img/portfolio/cliente 1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+				<div width="250" height="250" style="background-color:white;">
+					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 1.jpg" alt="img01"/>
+				</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-largesrc="img/portfolio/cliente 2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                <img width="250" height="250" src="img/portfolio/thumbs/cliente 2.jpg" alt="img02"/>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-largesrc="img/portfolio/cliente 3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                <img width="250" height="250" src="img/portfolio/thumbs/cliente 3.jpg" alt="img03"/>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-largesrc="img/portfolio/cliente 4.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+				<div width="250" height="250" style="background-color:white;">
+					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 4.jpg" alt="img01"/>
+				</div>
+              </a>
+            </li>
+            <li>
+              <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="img/portfolio/cliente 5.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                <img width="250" height="250" src="img/portfolio/thumbs/cliente 5.jpg" alt="img02"/>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-largesrc="img/portfolio/cliente 6.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                <img width="250" height="250" src="img/portfolio/thumbs/cliente 6.jpg" alt="img03"/>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-largesrc="img/portfolio/cliente 7.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                <img width="250" height="250" src="img/portfolio/thumbs/cliente 7.jpg" alt="img01"/>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-largesrc="img/portfolio/cliente 8.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                <img width="250" height="250" src="img/portfolio/thumbs/cliente 8.jpg" alt="img02"/>
+              </a>
+            </li>
+            <!-- <li>
+              <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                <img src="img/portfolio/thumbs/3.jpg" alt="img03"/>
+              </a>
+            </li>
+            <li>
               <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
                 <img src="img/portfolio/thumbs/1.jpg" alt="img01"/>
               </a>
@@ -283,52 +359,7 @@
               <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
                 <img src="img/portfolio/thumbs/3.jpg" alt="img03"/>
               </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/1.jpg" alt="img01"/>
-              </a>
-            </li>
-            <li>
-              <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/2.jpg" alt="img02"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/3.jpg" alt="img03"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/1.jpg" alt="img01"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/2.jpg" alt="img02"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/3.jpg" alt="img03"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/1.jpg" alt="img01"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/2.jpg" alt="img02"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/3.jpg" alt="img03"/>
-              </a>
-            </li>
+            </li> -->
           </ul>
 
         </div>
@@ -439,8 +470,8 @@
               </ul>            
               <ul class="col-xs-4">
                   <li><i class="fa fa-phone"></i> (+0051) 014253662</li>
-                  <li><i class="fa fa-phone"></i> (+0051) 981127677</li>
-                  <li><i class="fa fa-phone"></i> (+0051) 999068728</li>
+                  <li><i class="fa fa-phone"></i> (+0051) 936962848</li>
+                  <li><i class="fa fa-phone"></i> (+0051) 942769707</li>
                   <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@myspimacotton.pe</a></li>
                   <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@indumet.pe</a></li>
 					<li><i class="fa fa-skype"></i> Ambixo</li>-->
