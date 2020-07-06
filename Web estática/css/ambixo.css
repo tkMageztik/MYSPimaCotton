@@ -105,8 +105,8 @@ svg {
 
 .header {
     width: 100%;
-    background: #322e2f;
-    height: 140px;
+    background: white;
+    height: 300px;
     padding-top: 50px;
     margin-top: -30px;
     -webkit-transition: all 0.3s;
@@ -120,7 +120,7 @@ svg {
     left: 0;
     padding-top: 50px;
     margin-top: -30px;
-    height: 100px;
+    /*height: 100px;*/
     -webkit-animation-name: slideDown;
     -moz-animation-name: slideDown;
     -o-animation-name: slideDown;

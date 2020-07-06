@@ -1,505 +1,512 @@
 ﻿<!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <title>AMBIXO - HTML5 Parallax One Page Portfolio Responsive Template</title> -->
-	<title> M & S Pima Cotton</title> 
+    <title> M & S Pima Cotton</title>
     <!-- <link href="rs-plugin/css/settings.css" rel="stylesheet" /> -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/ambixo.css" rel="stylesheet">
-
     <!-- Script -->
     <script src="js/jquery.min.js"></script>
     <!-- <script src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
     <script src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script> -->
     <script src="js/portfolio/modernizr.custom.js"></script>
     <!-- <script src="js/testimonial/jquery.quovolver.min.js"></script> -->
-
     <!-- Favicons -->
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png">
     <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/apple-touch-icon-60x60.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-144x144.png"> 
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/apple-touch-icon-120x120.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/apple-touch-icon-152x152.png">
- 
 
     <!-- SEO Meta Tags -->
     <!-- <meta name="description" content="" /> -->
     <!-- <meta name="keywords" content="" /> -->
-
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Signika:300' rel='stylesheet' type='text/css'>
-
     <!-- Font Awesome -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	
-	<script>
-	$(document).ready(function() {
-		// executes when HTML-Document is loaded and DOM is ready
-		initialize_lang();
-	});
 
-	function spanish(){
-		$("#nav_about").text("Sobre Nosotros");
-		$("#nav_services").text("Servicios");
-		$("#nav_catalogue").text("Catálogo");
-		$("#nav_portfolio").text("Clientes");
-		$("#nav_contact").text("Contáctanos");
+    <script>
+        $(document).ready(function () {
+            // executes when HTML-Document is loaded and DOM is ready
+            //initialize_lang();
+            english();
+        });
 
-		$("#about-1 h3").html("Sobre Nosotros");
-		$("#about-1 p").html("Somos una empresa familiar y nuestro proyecto empezó en el año 2014, para entonces ya contábamos con mas de 15 años de experiencia en el rubro textil exportador con experiencia en Textil San Cristóbal y Netalco. Decidimos emprender nuestro propio proyecto M & S PIMA COTTON SAC, ese mismo año empezamos a exportar a uno de los principales mercados, ESTADOS UNIDOS.");
-		
-		$("#services h3").html("Servicios");
-		$('#services h4').eq(0).html("Diseño y Moda");
-		$('#services h4').eq(1).html("Producción");
-		$('#services h4').eq(2).html("Calidad y Puntualidad");
-			
-		$('#services p').eq(0).html("Contamos con área de Diseño, con especialistas que analizan las tendencias del mercado para poder lanzar colecciones nuevas que le puedan dar a nuestros clientes la posibilidad de vender NUEVOS DISEÑOS.");
-		$('#services p').eq(1).html("Contamos con una capacidad de producción de 30 mil prendas mensuales, en los diferentes diseños de moda para garantizar a nuestros clientes respuesta rápida a su necesidad.");
-		$('#services p').eq(2).html("Controlamos todos los procesos productivos y tenemos filtros que nos ayudan a obtener un producto de muy buena calidad. Y sobre todo la experiencia en la planificación del flujo productivo hace que nuestros clientes SIEMPRE queden satisfecho con nuestro trabajo.");
-		
-		$("#portfolio h3").html("Clientes");
-		
-		$("#selLang").attr({src: "img/i18n/es-PE.png", alt: "Español"});
+        function spanish() {
+            $("#nav_about").text("Sobre Nosotros");
+            $("#nav_services").text("Nuestro Servicios");
+            $("#nav_catalogue").text("Catálogo");
+            $("#nav_portfolio").text("Clientes");
+            $("#nav_contact").text("Contáctanos");
 
-		/*$("#spanish").contents().filter(function(){ 
-		  return this.nodeType == Node.TEXT_NODE; 
-		})[0].nodeValue = " Español";
+            $("#selLang").attr({ src: "img/i18n/es-PE.png", alt: "Español" });
+            $("#spanish").html("<img src='img/i18n/es-PE.png' alt='Español' /> Español");
+            $("#english").html("<img src='img/i18n/en-US.png' alt='Inglés' /> Inglés");
+            $(".wrap-about h3").text("Sobre Nosotros");
 
-		$("#english").contents().filter(function(){ 
-		  return this.nodeType == Node.TEXT_NODE; 
-		})[0].nodeValue = " English";*/
-	}
-	  
-	function english(){
-		$("#nav_about").text("About us");
-		$("#nav_services").text("Services");
-		$("#nav_catalogue").text("Catalogue");
-		$("#nav_portfolio").text("Customers");
-		$("#nav_contact").text("Contact");
-		
-		$("#about-1 h3").html("About us");
-		$("#about-1 p").html("About");
-		
-		$("#services h3").html("Services");
-		
-		$('#services h4').eq(0).html("b");
-		$('#services h4').eq(1).html("b");
-		$('#services h4').eq(2).html("b");
-		
-		$('#services p').eq(0).html("b");
-		$('#services p').eq(1).html("b");
-		$('#services p').eq(2).html("b");
-		
-		$("#portfolio h3").html("Customers");
+            //TODO: falta el tooltip
+            $("a[data-original-title='Follow me on Facebook']").attr({ title: "Sígueme en Facebook" });
 
-		$("#selLang").attr({src: "img/i18n/en-US.png", alt: "English"});
+            //Modo antiguo
+            //$(".container h3:contains('Services')").text("Nuestros Servicios");
+            //Modo nuevo
+            $("h3:contains('Services')").text("Nuestros Servicios");
+            $("h3:contains('Customers')").text("Clientes");
+            $("h3:contains('Contact')").text("Contáctanos");
+            $("h4:contains(' Contact Information ')").text(" Información de contacto ");
+            $("h5:contains(' Would you like to contact us? ')").text(" ¿Deseas contactarte con nosotros? ");
+            $("#contact_text").text("Llena el siguiente formulario si tienes alguna pregunta que estaremos felices de atenderte.");
+            $("label[for='name']").text("Nombre / Compañia:");
+            $("input[id='name']").attr("placeholder", "Ingresa el/la Nombre / Compañia:");
+            $("label[for='email']").text("Correo:");
+            $("input[id='email']").attr("placeholder", "Ingresa el Correo:");
+            $("label[for='subject']").text("Asunto:");
+            $("input[id='subject']").attr("placeholder", "Ingresa el Asunto:");
+            $("label[for='phone']").text("Teléfono / Celular:");
+            $("input[id='phone']").attr("placeholder", "Ingresa el Teléfono / Celular:");
+            $("label[for='msg']").text("Mensaje:");
+            $("input[id='msg']").attr("placeholder", "Ingresa el Mensaje:");
+            $(":submit").text("Enviar");
+            $(".fa.fa-clock-o ").parent().html("<i class='fa fa-clock-o'></i> Lun - Vie: 9:00am &rarr; 5:30pm <br>Sáb: 10:00am &rarr; 2:30pm <br>Domingo: Cerrado");
+            $("#brand-and-copy p").html("© 2018 Natcom Systems. Todos los derechos reservados. Plantilla HTML5-CSS3 creada por <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
+            /*$("#spanish").contents().filter(function(){
+              return this.nodeType == Node.TEXT_NODE;
+            })[0].nodeValue = " Español";
 
-		/*$("#spanish").contents().filter(function(){ 
-		  return this.nodeType == Node.TEXT_NODE; 
-		})[0].nodeValue = " Español";
+            $("#english").contents().filter(function(){
+              return this.nodeType == Node.TEXT_NODE;
+            })[0].nodeValue = " English";*/
+        }
 
-		$("#english").contents().filter(function(){ 
-		  return this.nodeType == Node.TEXT_NODE; 
-		})[0].nodeValue = " English";*/
-	}
-	  
-	function initialize_lang() {
+        function english() {
+            $("#nav_about").text("About");
+            $("#nav_services").text("Services");
+            $("#nav_catalogue").text("Catalogue");
+            $("#nav_portfolio").text("Customers");
+            $("#nav_contact").text("Contact");
 
-		var userLang = navigator.language || navigator.userLanguage;
+            $("#selLang").attr({ src: "img/i18n/en-US.png", alt: "English" });
+            $("#spanish").html("<img src='img/i18n/es-PE.png' alt='Spanish' /> Spanish");
+            $("#english").html("<img src='img/i18n/en-US.png' alt='English' /> English");
+            $(".wrap-about h3").text("About");
 
-		if (userLang === "es") 
-		{
-			spanish();
-		}else { english(); }
-	}
-	  
-	 </script>
-  </head>
-  <body data-spy="scroll" data-target=".header">
+            $("a[data-original-title='Sígueme en Facebook']").attr({ title: "Follow me on Facebook" });
+
+            $("h3:contains('Nuestros Servicios')").text("Services");
+            $("h3:contains('Clientes')").text("Customers");
+            $("h3:contains('Contáctanos')").text("Contact");
+            $("h4:contains(' Información de Contacto ')").text(" Contact Information ");
+            $("h5:contains(' ¿Deseas contactarte con nosotros? ')").text(" Would you like to contact us? ");
+            $("#contact_text").text("Fill out the following form if you have any questions and we will pleased to assist you."); $("label[for='name']").text("Nombre / Compañia:");
+            $("label[for='name']").text("Name / Company:");
+            $("input[id='name']").attr("placeholder","Enter Name / Company:");
+            $("label[for='email']").text("Email:");
+            $("input[id='email']").attr("placeholder", "Enter Email:");
+            $("label[for='subject']").text("Subject:");
+            $("input[id='subject']").attr("placeholder", "Enter Subject:");
+            $("label[for='phone']").text("Phone / Cellphone:");
+            $("input[id='phone']").attr("placeholder", "Enter Phone / Cellphone:");
+            $("label[for='msg']").text("Message:");
+            $("input[id='msg']").attr("placeholder", "Enter Message:");
+            $(":submit").text("Submit");
+            $(".fa.fa-clock-o ").parent().html("<i class='fa fa-clock-o'></i> Mon - Fri: 9:00am &rarr; 5:30pm <br>Sat: 10:00am &rarr; 2:30pm <br>Sunday: Closed");
+            $("#brand-and-copy p").html("© 2018 Natcom Systems. All rights reserved. HTML5-CSS3 Template by <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
+            /*$("#spanish").contents().filter(function(){
+              return this.nodeType == Node.TEXT_NODE;
+            })[0].nodeValue = " Español";
+
+            $("#english").contents().filter(function(){
+              return this.nodeType == Node.TEXT_NODE;
+            })[0].nodeValue = " English";*/
+        }
+
+        function initialize_lang() {
+
+            var userLang = navigator.language || navigator.userLanguage;
+            if (userLang.substring(0, 2) === "es") {
+                spanish();
+            } else { english(); }
+        }
+
+    </script>
+</head>
+<body data-spy="scroll" data-target=".header">
     <header>
-      <div id="header" class="header">
-        <div class="container">
-          <h1 class="logo"><a href="#"><span>M</span>&<span class="S">S</span></a> Pima Cotton sac</h1>
-          <h2 class="tagline hidden-xs"><!--<span>HTML5</span> Parallax <span>One Page</span> Portfolio <span>Responsive</span> Template--></h2>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" style="padding: 0 0 0 0;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						<img id="selLang" src="img/i18n/en-US.png" alt="English" />
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu" >
-						<li role="presentation"><a id="spanish" href="#" class="language" onclick="spanish();" rel="es-PE"><img src="img/i18n/es-PE.png" alt="Spanish" /> Español</a></li>
-						<li role="presentation"><a id="english" href="#" class="language" onclick="english();" rel="en-US"><img src="img/i18n/en-US.png" alt="English" /> English</a></li>
-					</ul>
-				</li>
-			</ul>
-        </div>
-        <a href="#about" class="sr-only">Skip to main content</a>
-        <nav id="main-nav">
-          <div class="navbar navbar-default" role="navigation">
+        <div id="header" class="header">
             <div class="container">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-              <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                  <li><a id="nav_about" href="#about-1">About</a></li>
-                  <li><a id="nav_services" href="#services">Services</a></li>
-                  <li><a id="nav_catalogue" href="sicweb/catalogue/catalogue">Catalogue</a></li>
-                  <li><a id="nav_portfolio" href="#portfolio">Customers</a></li>
-                  <!--<li><a href="#skills">Skills</a></li>
-                  <li><a href="#education">Education</a></li>-->
-                  <li><a id="nav_contact" href="#contact">Contact</a></li>
-				</ul>
-				
-              </div>
+                <h1 class="logo"><a href="#"><span>M</span>&<span class="S">S</span></a> Pima Cotton sac</h1>
+                <h2 class="tagline hidden-xs"><!--<span>HTML5</span> Parallax <span>One Page</span> Portfolio <span>Responsive</span> Template--></h2>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" style="padding: 0 0 0 0;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <img id="selLang" src="img/i18n/en-US.png" alt="English" />
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation"><a id="spanish" href="#" class="language" onclick="spanish();" rel="es-PE"><img src="img/i18n/es-PE.png" alt="Spanish" /> Español</a></li>
+                            <li role="presentation"><a id="english" href="#" class="language" onclick="english();" rel="en-US"><img src="img/i18n/en-US.png" alt="English" /> English</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-          </div>
-        </nav>
-      </div>
-      <svg class="decor" height="100" preserveaspectratio="none" version="1.1" viewbox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 100 L100 0 L0 0" stroke-width="0"></path>
-      </svg>
+            <a href="#about" class="sr-only">Skip to main content</a>
+            <nav id="main-nav">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a id="nav_about" href="#about-1">About</a></li>
+                                <li><a id="nav_services" href="#services">Services</a></li>
+                                <li><a id="nav_catalogue" href="sicweb/catalogue/catalogue">Catalogue</a></li>
+                                <li><a id="nav_portfolio" href="#portfolio">Customers</a></li>
+                                <!--<li><a href="#skills">Skills</a></li>
+                                <li><a href="#education">Education</a></li>-->
+                                <li><a id="nav_contact" href="#contact">Contact</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <svg class="decor" height="100" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 100 L100 0 L0 0" stroke-width="0"></path>
+        </svg>
     </header>
-
     <section id="main-img">
-         <img class="img-responsive" src="img/prueba_main.jpg" alt="">
-		 <!--<img class="img-responsive" src="img/paisaje_prueba.jpg" alt="">-->
-		 
-    </section>
+        <img class="img-responsive" src="img/prueba_main.jpg" alt="">
+        <!--<img class="img-responsive" src="img/paisaje_prueba.jpg" alt="">-->
 
+    </section>
     <!-- About -->
     <section id="about-1" class="section-page">
-      <div class="container-fluid">
-        <div class="container">
-           <div>
-            <div class="about col-sm-6">
-              <div class="wrap-about">
-                <h3>About</h3>
-                <p>
-                  Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-                  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
-                  Maecenas elementum augue nec nisl. Proin auctor lorem at nibh. Curabitur nulla purus, feugiat id, elementum in, lobortis quis, pede. Vivamus sodales adipiscing sapien.
-                </p>
-                <ul class="social-account container-fluid">
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a></address></li>
-				  <!--
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Google+"><i class="fa fa-google-plus"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on LinkedIn"><i class="fa fa-linkedin"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on YouTube"><i class="fa fa-youtube"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Vimeo"><i class="fa fa-vimeo-square"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Pinterest"><i class="fa fa-pinterest"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Flickr"><i class="fa fa-flickr"></i></a></address></li>  
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Dribbble"><i class="fa fa-dribbble"></i></a></address></li>
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow my Feeds"><i class="fa fa-rss"></i></a></address></li>
-				  -->
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="My e-mail"><i class="fa fa-envelope-o"></i></a></address></li>
-                 </ul>
-              </div>
+        <div class="container-fluid">
+            <div class="container">
+                <div>
+                    <div class="about col-sm-6">
+                        <div class="wrap-about">
+                            <h3>About</h3>
+                            <p>
+                                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+                                Maecenas elementum augue nec nisl. Proin auctor lorem at nibh. Curabitur nulla purus, feugiat id, elementum in, lobortis quis, pede. Vivamus sodales adipiscing sapien.
+                            </p>
+                            <ul class="social-account container-fluid">
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a></address></li>
+                                <!--
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Google+"><i class="fa fa-google-plus"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on LinkedIn"><i class="fa fa-linkedin"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on YouTube"><i class="fa fa-youtube"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Vimeo"><i class="fa fa-vimeo-square"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Pinterest"><i class="fa fa-pinterest"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Flickr"><i class="fa fa-flickr"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Dribbble"><i class="fa fa-dribbble"></i></a></address></li>
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow my Feeds"><i class="fa fa-rss"></i></a></address></li>
+                                -->
+                                <li><address><a class="tool" data-placement="bottom" rel="me" href="mailto:sortiz@myspimacotton.pe" title="My e-mail"><i class="fa fa-envelope-o"></i></a></address></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="about col-sm-6"><img class="img-responsive" src="img/man.png" alt="" /></div>-->
+                    <div class="about col-sm-6"><img class="img-responsive" alt="" /></div>
+                </div>
             </div>
-            <div class="about col-sm-6"><img class="img-responsive" src="img/FOTO DE PORTADA 3.jpeg" alt="" /></div>
-            <div class="about col-sm-6"><img class="img-responsive" alt="" /></div>
-          </div>
         </div>
-      </div>
     </section>
-<!--
     <section id="about-2" class="section-page hidden-xs">
-      <div class="container-fluid">
-        <div class="container">
-           <div>
-            <!--<div class="about col-sm-6"><img class="img-responsive" src="img/woman.png" alt="" /></div>
-            <div class="about col-sm-6">
-              <div class="wrap-about">
-                <h3>About</h3>
-                <p>
-                  Somos una empresa familiar y nuestro proyecto empezó en el año 2014, para entonces ya contábamos con mas de 15 años de experiencia en el rubro textil exportador con experiencia de Textil San Cristóbal y Netalco, decidimos emprender nuestro propio proyecto M & S PIMA COTTON SAC, ese mismo año empezamos a exportar a uno de los principales mercados de ESTADOS UNIDOS.
-                </p>
-              </div>
+        <div class="container-fluid">
+            <div class="container">
+                <div>
+                    <!--<div class="about col-sm-6"><img class="img-responsive" src="img/woman.png" alt="" /></div>-->
+                    <div class="about col-sm-6">
+                        <!--TODO: porque hay dos about?-->
+                        <div class="wrap-about">
+                            <h3>About</h3>
+                            <p>
+                                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+                                Maecenas elementum augue nec nisl. Proin auctor lorem at nibh. Curabitur nulla purus, feugiat id, elementum in, lobortis quis, pede. Vivamus sodales adipiscing sapien.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
--->
     <!-- Parallax 1 -->
     <section id="parallax-1" class="container-fluid parallax fixed" style="background-image: url(img/parallax/1.jpg)">
-      <p class="parallax-text">Just for Ambitious</p>
-    </section> 
-
+        <p class="parallax-text">Just for Ambitious</p>
+    </section>
     <!-- Services -->
     <section id="services" class="section-page">
-      <div class="container">
-        <h3 class="text-center">Services</h3>
-         <div>
-          <div class="col-sm-12">
-            <div class="about col-sm-4">
-              <h4 class="text-center text-uppercase"><i class="fa fa-desktop"></i> Web Design</h4>
-                <div class="easy-pie-chart" data-percent="100">
-                  <span>100<sup>%</sup></span>
+        <div class="container">
+            <h3 class="text-center">Services</h3>
+            <div>
+                <div class="col-sm-12">
+                    <div class="about col-sm-4">
+                        <!--TODO: falta agregar servicios reales de myspima-->
+                        <h4 class="text-center text-uppercase"><i class="fa fa-desktop"></i> Web Design</h4>
+                        <div class="easy-pie-chart" data-percent="100">
+                            <span>100<sup>%</sup></span>
+                        </div>
+                        <p class="text-center">
+                            Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                            Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                        </p>
+                    </div>
+                    <div class="about col-sm-4">
+                        <!--TODO: falta agregar servicios reales de myspima-->
+                        <h4 class="text-center text-uppercase"><i class="fa fa-search"></i> SEO</h4>
+                        <div class="easy-pie-chart" data-percent="90">
+                            <span>90<sup>%</sup></span>
+                        </div>
+                        <p class="text-center">
+                            Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                            Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                        </p>
+                    </div>
+                    <div class="about col-sm-4">
+                        <!--TODO: falta agregar servicios reales de myspima-->
+                        <h4 class="text-center text-uppercase"><i class="fa fa-bullhorn"></i> Web Marketing</h4>
+                        <div class="easy-pie-chart" data-percent="80">
+                            <span>80<sup>%</sup></span>
+                        </div>
+                        <p class="text-center">
+                            Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                            Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
+                        </p>
+                    </div>
                 </div>
-              <p class="text-center">
-                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-              </p>
             </div>
-            <div class="about col-sm-4">
-              <h4 class="text-center text-uppercase"><i class="fa fa-search"></i> SEO</h4>
-                <div class="easy-pie-chart" data-percent="100">
-                  <span>100<sup>%</sup></span>
-                </div>
-              <p class="text-center">
-                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-              </p>
-            </div>
-            <div class="about col-sm-4">
-              <h4 class="text-center text-uppercase"><i class="fa fa-bullhorn"></i> Web Marketing</h4>
-               <div class="easy-pie-chart" data-percent="100">
-                  <span>100<sup>%</sup></span>
-               </div>
-              <p class="text-center">
-                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-                Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula.
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
-
     <!-- Parallax 2 -->
     <section id="parallax-2" class="container-fluid parallax fixed" style="background-image: url(img/parallax/2.jpg)">
-      <p class="parallax-text">Usable</p> 
-    </section> 
-
+        <p class="parallax-text">Usable</p>
+    </section>
     <!-- Portfolio -->
     <section id="portfolio" class="section-page">
         <div class="container">
-          <h3 class="text-center">Customers</h3>
-          <!--<p class="text-center">All brand icons are trademarks of their respective owners</p>-->
-
-          <ul id="og-grid" class="og-grid">
-            <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-				<div width="250" height="250" style="background-color:white;">
-					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 1.jpg" alt="img01"/>
-				</div>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img width="250" height="250" src="img/portfolio/thumbs/cliente 2.jpg" alt="img02"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img width="250" height="250" src="img/portfolio/thumbs/cliente 3.jpg" alt="img03"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 4.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-				<div width="250" height="250" style="background-color:white;">
-					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 4.jpg" alt="img01"/>
-				</div>
-              </a>
-            </li>
-            <li>
-              <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="img/portfolio/cliente 5.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img width="250" height="250" src="img/portfolio/thumbs/cliente 5.jpg" alt="img02"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 6.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img width="250" height="250" src="img/portfolio/thumbs/cliente 6.jpg" alt="img03"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 7.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img width="250" height="250" src="img/portfolio/thumbs/cliente 7.jpg" alt="img01"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 8.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img width="250" height="250" src="img/portfolio/thumbs/cliente 8.jpg" alt="img02"/>
-              </a>
-            </li>
-            <!-- <li>
-              <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/3.jpg" alt="img03"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/1.jpg" alt="img01"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/2.jpg" alt="img02"/>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
-                <img src="img/portfolio/thumbs/3.jpg" alt="img03"/>
-              </a>
-            </li> -->
-          </ul>
-
+            <h3 class="text-center">Customers</h3>
+            <!--<p class="text-center">All brand icons are trademarks of their respective owners</p>-->
+            <ul id="og-grid" class="og-grid">
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/1.jpg" alt="img01" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/2.jpg" alt="img02" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/3.jpg" alt="img03" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/1.jpg" alt="img01" />
+                    </a>
+                </li>
+                <li>
+                    <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/2.jpg" alt="img02" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/3.jpg" alt="img03" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/1.jpg" alt="img01" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/2.jpg" alt="img02" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/3.jpg" alt="img03" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/1.jpg" alt="img01" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/2.jpg" alt="img02" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-largesrc="img/portfolio/3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+                        <img src="img/portfolio/thumbs/3.jpg" alt="img03" />
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
-
     <!-- Parallax Google Maps -->
-    <section id="parallax-9" class="container-fluid parallax fixed"> 
-      <div id="map-canvas"></div>
-      <!-- <p class="parallax-text">Made with Bootstrap 3</p> -->
-    </section>  
-
+    <section id="parallax-9" class="container-fluid parallax fixed">
+        <div id="map-canvas"></div>
+        <!-- <p class="parallax-text">Made with Bootstrap 3</p> -->
+    </section>
     <!-- Contact -->
     <section id="contact" class="section-page">
-      <div class="container">
-        <h3 class="text-center">Contact</h3>
-		  <div class="col-sm-12">
-              <h4 class="text-left text-uppercase"> Contact Information </h4>
-			  <!-- Deseas comunicarte con nosotros? -->
-              <h5 class="text-left text-uppercase"> Would you like to contact us? </h5>
-			  <!-- Rellene el siguiente formulario si tiene alguna consulta y gustosamente lo atenderemos. -->
-              <p>
-			  Fill out the following form if you have any questions and we will pleased to assist you.
-              </p>
-			  <br>
-				<form class="form-horizontal">
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="name">Name / Company:</label>
-					<div class="col-sm-8">
-					<input type="text" class="form-control" id="name" placeholder="Enter Name / Company">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="email">Email:</label>
-					<div class="col-sm-8"> 
-					<input type="email" class="form-control" id="email" placeholder="Enter Email">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="subject">Subject:</label>
-					<div class="col-sm-8"> 
-					<input type="text" class="form-control" id="subject" placeholder="Enter Subject">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="phone">Phone / Cellphone:</label>
-					<div class="col-sm-8"> 
-					<input type="text" class="form-control" id="phone" placeholder="Enter Phone / Cellphone">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="msg">Message:</label>
-					<div class="col-sm-8"> 
-					<input type="msg" class="form-control" id="msg" placeholder="Enter password">
-					</div>
-				</div>
-				<div class="form-group"> 
-					<div class="col-sm-offset-3">
-						<div class="checkbox">
-						<label><input type="checkbox"> Remember me</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group"> 
-					<div class="col-sm-offset-3">
-					<button type="submit" class="btn btn-default">Submit</button>
-					</div>
-				</div>
-				</form>
+        <div class="container">
+            <h3 class="text-center">Contact</h3>
+            <div class="col-sm-12">
+                <h4 class="text-left text-uppercase"> Contact Information </h4>
+                <!-- Deseas comunicarte con nosotros? -->
+                <h5 class="text-left text-uppercase"> Would you like to contact us? </h5>
+                <!-- Rellene el siguiente formulario si tiene alguna consulta y gustosamente lo atenderemos. -->
+                <p id="contact_text">
+                    Fill out the following form if you have any questions and we will pleased to assist you.
+                </p>
+                <br>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="name">Name / Company:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name / Company">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="email">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="subject">Subject:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="subject" placeholder="Enter Subject">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="phone">Phone / Cellphone:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="phone" placeholder="Enter Phone / Cellphone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="msg">Message:</label>
+                        <div class="col-sm-8">
+                            <input type="msg" class="form-control" id="msg" placeholder="Enter password">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <div class="col-sm-offset-3">
+                            <div class="checkbox">
+                                <label><input type="checkbox"> Remember me</label>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <div class="col-sm-offset-3">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
-		  <div class="container">
-			  <!-- Social Links -->
-			  <div class="col-xs-12">
-				  <ul id="social-links"> 
-					  <li><a class="tool" data-placement="top" href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="mailto:sortiz@myspimacotton.pe" title="E-Mail"><i class="fa fa-envelope-o"></i></a></li>
-					  <!--<li><a class="tool" data-placement="top" href="#" title="Google+"><i class="fa fa-google-plus"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>    
-					  <li><a class="tool" data-placement="top" href="#" title="YouTube"><i class="fa fa-youtube"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="Flickr"><i class="fa fa-flickr"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="Github"><i class="fa fa-github-alt"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="Twitter"><i class="fa fa-dribbble"></i></a></li>
-					  <li><a class="tool" data-placement="top" href="#" title="RSS"><i class="fa fa-rss"></i></a></li>-->
-					  
-				  </ul>
-			  </div>
-			  <!-- Brand & Copyright -->
-			  <div id="brand-and-copy" class="col-xs-12">
-				<!--<p id="brand" class="logo"><span>A</span>mbixo</p>-->
-				<p>© 2015 Ambixo. All rights reserved. HTML5-CSS3 Template by <a href="http://www.martinasepi.it" target="_blank">Martina Sepi</a></p>
-			  </div>
-		  </div>
-    </section>
+        </div>
+        <div class="container">
+            <!-- Social Links -->
+            <div class="col-xs-12">
+                <ul id="social-links">
+                    <li><a class="tool" data-placement="top" href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="mailto:sortiz@myspimacotton.pe" title="E-Mail"><i class="fa fa-envelope-o"></i></a></li>
+                    <!--<li><a class="tool" data-placement="top" href="#" title="Google+"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="YouTube"><i class="fa fa-youtube"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="Vimeo"><i class="fa fa-vimeo-square"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="Flickr"><i class="fa fa-flickr"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="Github"><i class="fa fa-github-alt"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="Twitter"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="tool" data-placement="top" href="#" title="RSS"><i class="fa fa-rss"></i></a></li>-->
 
-    <section id="contact-footer">
-      <div class="container">
-         <div>
-          <div class="col-xs-12">
-              <ul class="col-xs-4">
-                  <li><i class="fa fa-map-marker"></i> Jr. Eduardo Terry 1558 <br>
-                      Urb. Parque Unión <br>
-                      Cercado de Lima - Lima - Perú
-                  </li>
-              </ul>            
-              <ul class="col-xs-4">
-                  <li><i class="fa fa-phone"></i> (+0051) 014253662</li>
-                  <li><i class="fa fa-phone"></i> (+0051) 936962848</li>
-                  <li><i class="fa fa-phone"></i> (+0051) 942769707</li>
-                  <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@myspimacotton.pe</a></li>
-                  <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@indumet.pe</a></li>
-					<li><i class="fa fa-skype"></i> Ambixo</li>-->
-              </ul>
-              <ul class="col-xs-4">
-                  <li><i class="fa fa-clock-o"></i> Mon-Fri: 9:00am &rarr; 5:30pm <br>
-                    Sat: 10:00am &rarr; 2:30pm <br>
-                    Sunday: Closed
-                  </li>
-              </ul>
-              <!--<ul class="col-xs-3">
-                  <li><i class="fa fa-info-circle"></i> Aliquam lectus orci adipiscing et sodales ac feugiat non lacus ut dictum velit <span class="hidden-xs">nec est quisque posuere purus sit amet</span>
-                  </li>
-              </ul> -->
+                </ul>
             </div>
-          </div>
+            <!-- Brand & Copyright -->
+            <div id="brand-and-copy" class="col-xs-12">
+                <!--<p id="brand" class="logo"><span>A</span>mbixo</p>-->
+                <p>© 2018 Natcom Systems. All rights reserved. HTML5-CSS3 Template by <a href="http://www.martinasepi.it" target="_blank">Martina Sepi</a></p>
+            </div>
         </div>
     </section>
-    
+    <section id="contact-footer">
+        <div class="container">
+            <div>
+                <div class="col-xs-12">
+                    <ul class="col-xs-4">
+                        <li>
+                            <i class="fa fa-map-marker"></i> Jr. Eduardo Terry 1558 <br>
+                            Urb. Parque Unión <br>
+                            Cercado de Lima - Lima - Perú
+                        </li>
+                    </ul>
+                    <ul class="col-xs-4">
+                        <li><i class="fa fa-phone"></i> (+0051) 014253662</li>
+                        <li><i class="fa fa-phone"></i> (+0051) 981127677</li>
+                        <li><i class="fa fa-phone"></i> (+0051) 999068728</li>
+                        <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@myspimacotton.pe</a></li>
+                        <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@indumet.pe</a></li>
+                        <!--TODO: Falta poner el skype-->
+                        <!--<li><i class="fa fa-skype"></i> Ambixo</li>-->-->
+                    </ul>
+                    <ul class="col-xs-4">
+                        <li>
+                            <i class="fa fa-clock-o"></i> Mon-Fri: 9:00am &rarr; 5:30pm <br>
+                            Sat: 10:00am &rarr; 2:30pm <br>
+                            Sunday: Closed
+                        </li>
+                    </ul>
+                    <!--<ul class="col-xs-3">
+                        <li><i class="fa fa-info-circle"></i> Aliquam lectus orci adipiscing et sodales ac feugiat non lacus ut dictum velit <span class="hidden-xs">nec est quisque posuere purus sit amet</span>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Back to Top -->
     <p class="back-to-top"><i class="fa fa-chevron-up"></i></p>
-      
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-
     <script src="js/bootstrap.min.js"></script>
-
     <!-- JavaScripts -->
     <script src="js/services/jquery.easypiechart.min.js"></script>
     <!-- <script src="js/carousel/jquery.bxslider.min.js"></script> -->
@@ -510,40 +517,37 @@
     <script src="js/parallax/jquery.localscroll-1.2.7-min.js"></script>
     <script src="js/parallax/jquery.scrollTo-min.js"></script>
     <script src="js/ambixo.js"></script>
-
     <script>
-      $('.easy-pie-chart').easyPieChart({
-        animate: 2000,
-        scaleColor: false,
-        lineWidth: 20,
-        lineCap: 'square',
-        size: 180,
-        trackColor: '#3e383a',
-        barColor: '#D0C5BF',
-      });
+        $('.easy-pie-chart').easyPieChart({
+            animate: 2000,
+            scaleColor: false,
+            lineWidth: 20,
+            lineCap: 'square',
+            size: 180,
+            trackColor: '#3e383a',
+            barColor: '#D0C5BF',
+        });
     </script>
-
     <!-- IMPORTANT: If you don't use Google Map, delete these two scripts to gain more speed -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXFnUGyfOrHXuQIEDXrXYqjJ-BAPukVOM&v=3.exp"></script>
-    <script> 
-      function initialize() {
-        var myLatlng = new google.maps.LatLng(-12.0436036,-77.0621788);
-        var mapOptions = {
-          zoom: 16,
-          center: myLatlng,
-          scrollwheel: false 
-        }
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    <script>
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(-12.0436036, -77.0621788);
+            var mapOptions = {
+                zoom: 16,
+                center: myLatlng,
+                scrollwheel: false
+            }
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Here I Am!'
-        });
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Here I Am!'
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
-
-  </body>
+</body>
 </html>
