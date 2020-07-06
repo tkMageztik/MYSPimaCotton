@@ -40,12 +40,12 @@
         $(document).ready(function() {
             // executes when HTML-Document is loaded and DOM is ready
             //initialize_lang();
-            english();
+            //english();
         });
 
         function spanish(){
             $("#nav_about").text("Sobre Nosotros");
-            $("#nav_services").text("Servicios");
+            $("#nav_services").text("Nuestros Servicios");
             $("#nav_catalogue").text("Catálogo");
             $("#nav_portfolio").text("Clientes");
             $("#nav_contact").text("Contáctanos");
@@ -53,40 +53,42 @@
             $("#selLang").attr({ src: "img/i18n/es-PE.png", alt: "Español" });
             $("#spanish").html("<img src='img/i18n/es-PE.png' alt='Español' /> Español");
             $("#english").html("<img src='img/i18n/en-US.png' alt='Inglés' /> Inglés");
-            $(".wrap-about h3").text("Sobre Nosotros");
-
-			$("#about-1 h3").html("Sobre Nosotros");
-			$("#about-1 p").html("Somos una empresa familiar y nuestro proyecto empezó en el año 2014, para entonces ya contábamos con mas de 15 años de experiencia en el rubro textil exportador con experiencia en Textil San Cristóbal y Netalco. Decidimos emprender nuestro propio proyecto M & S PIMA COTTON SAC, ese mismo año empezamos a exportar a uno de los principales mercados, ESTADOS UNIDOS.");
-		
-			$("#services h3").html("Servicios");
-			$('#services h4').eq(0).html("Diseño y Moda");
-			$('#services h4').eq(1).html("Producción");
-			$('#services h4').eq(2).html("Calidad y Puntualidad");
 			
-			$('#services p').eq(0).html("Contamos con área de Diseño, con especialistas que analizan las tendencias del mercado para poder lanzar colecciones nuevas que le puedan dar a nuestros clientes la posibilidad de vender NUEVOS DISEÑOS.");
-			$('#services p').eq(1).html("Contamos con una capacidad de producción de 30 mil prendas mensuales, en los diferentes diseños de moda para garantizar a nuestros clientes respuesta rápida a su necesidad.");
-			$('#services p').eq(2).html("Controlamos todos los procesos productivos y tenemos filtros que nos ayudan a obtener un producto de muy buena calidad. Y sobre todo la experiencia en la planificación del flujo productivo hace que nuestros clientes SIEMPRE queden satisfecho con nuestro trabajo.");
+			$("#about-1 h3").html("Sobre Nosotros");
+			$("#about-1 p").html("M&S PIMA COTTON es un negocio familiar. Cuando nos embarcamos en este proyecto, en 2014, ya teníamos 15 años de experiencia trabajando en el rubro textil.");
+		
+			$("#about-2 p").html("Habiendo adquirido experiencia formativa trabajando en las empresas textiles San Cristóbal y Nettalco, decidimos establecer nuestro propio proyecto como M&S PIMA COTTON. En el mismo año que iniciamos operaciones comerciales, comenzamos a exportar nuestros productos a uno de los principales mercados de exportación, Estados Unidos.");
+			
+			$("#services h3").html("Nuestros Servicios");
+			$('#services h4').eq(0).html("<i class='fa fa-desktop'></i> Diseño y Moda");
+			$('#services h4').eq(1).html("<i class='fa fa-search'></i> Producción");
+			$('#services h4').eq(2).html("<i class='fa fa-bullhorn'></i> Calidad y Puntualidad");
+			
+			$('#services p').eq(0).html("Contamos con un departamento de diseño cuyos miembros son especialistas que analizan las tendencias del mercado para lanzar nuevas colecciones que pueden brindar a nuestros clientes la oportunidad de vender diseños innovadores.");
+			$('#services p').eq(1).html("Tenemos una capacidad de producción mensual de 30,000 prendas en diferentes diseños de moda para garantizar a nuestros clientes una pronta respuesta a sus necesidades.");
+			$('#services p').eq(2).html("Mantenemos un estricto control de todos nuestros procesos de producción, y tenemos filtros que nos ayudan a obtener productos de alta calidad. Lo más importante, nuestra experiencia en la planificación del flujo de producción siempre hace que nuestros clientes se sientan satisfechos con nuestro trabajo.");
 		
 			$("#portfolio h3").html("Clientes");
 		
 			$("#contact h3").html("Contáctanos");
 			$('#contact h4').html("INFORMACIÓN DE CONTACTO");
-			$('#contact h5').html("¿QUIERES CONTACTARNOS?");
-			$('#contact p').eq(0).html("Rellene el siguiente formulario si tiene alguna pregunta y estaremos encantados de ayudarle.");
-		
+			$('#contact h5').html("¿DESEAS CONTACTARTE CON NOSOTROS?");
+			$('#contact p').eq(0).html("Llena el siguiente formulario si tienes alguna pregunta que estaremos felices de atenderte.");
 		
             //TODO: falta el tooltip
             $("a[data-original-title='Follow me on Facebook']").attr({ title: "Sígueme en Facebook" });
 
             //Modo antiguo
             //$(".container h3:contains('Services')").text("Nuestros Servicios");
-            //Modo nuevo
+            //Modo antiguo-2
+            /*$(".wrap-about h3").text("Sobre Nosotros");
             $("h3:contains('Services')").text("Nuestros Servicios");
             $("h3:contains('Customers')").text("Clientes");
             $("h3:contains('Contact')").text("Contáctanos");
-            $("h4:contains(' Contact Information ')").text(" Información de contacto ");
-            $("h5:contains(' Would you like to contact us? ')").text(" ¿Deseas contactarte con nosotros? ");
-            $("#contact_text").text("Llena el siguiente formulario si tienes alguna pregunta que estaremos felices de atenderte.");
+            $("h4:contains(' Contact Information ')").text("INFORMACIÓN DE CONTACTO");
+            $("h5:contains(' Would you like to contact us? ')").text("¿DESEAS CONTACTARTE CON NOSOTROS?");
+            $("#contact_text").text("Llena el siguiente formulario si tienes alguna pregunta que estaremos felices de atenderte.");*/
+			
             $("label[for='name']").text("Nombre / Compañia:");
             $("input[id='name']").attr("placeholder", "Ingresa el/la Nombre / Compañia:");
             $("label[for='email']").text("Correo:");
@@ -99,7 +101,7 @@
             $("input[id='msg']").attr("placeholder", "Ingresa el Mensaje:");
             $(":submit").text("Enviar");
             $(".fa.fa-clock-o ").parent().html("<i class='fa fa-clock-o'></i> Lun - Vie: 9:00am &rarr; 5:30pm <br>Sáb: 10:00am &rarr; 2:30pm <br>Domingo: Cerrado");
-            $("#brand-and-copy p").html("© 2018 Natcom Systems. Todos los derechos reservados. Plantilla HTML5-CSS3 creada por <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
+            $("#brand-and-copy p").html("© 2020 Natcom Systems. Todos los derechos reservados. Plantilla HTML5-CSS3 creada por <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
             /*$("#spanish").contents().filter(function(){
               return this.nodeType == Node.TEXT_NODE;
             })[0].nodeValue = " Español";
@@ -119,23 +121,20 @@
             $("#selLang").attr({ src: "img/i18n/en-US.png", alt: "English" });
             $("#spanish").html("<img src='img/i18n/es-PE.png' alt='Spanish' /> Spanish");
             $("#english").html("<img src='img/i18n/en-US.png' alt='English' /> English");
-            $(".wrap-about h3").text("About");
-
-            $("a[data-original-title='Sígueme en Facebook']").attr({ title: "Follow me on Facebook" });
-
+            
 			$("#about-1 h3").html("About us");
-			$("#about-1 p").html("M&S PIMA COTTON is a family-run business.  By the time we embarked on this project, back in 2014, we already had 15 years of experience as a textile-exporting company.");
+			$("#about-1 p").html("M&S PIMA COTTON is a family-run business. By the time we embarked on this project, back in 2014, we already had 15 years of experience working in the textile industry.");
 		
-			$("#about-2 p").html("Having gained formative experience by working at San Cristobal and Netalco Textile Company, we decided to set up our own project as M&S PIMA COTTON. In the same year we came into commercial operation, we started to export our products to the United States, which later became one of our main export markets.");
+			$("#about-2 p").html("Having gained formative experience by working at San Cristobal and Nettalco Textile Company, we decided to set up our own project as M&S PIMA COTTON. In the same year we came into commercial operation, we started to export our products to one of the main export markets, United States.");
 		
 			$("#services h3").html("Services");
 		
-			$('#services h4').eq(0).html("Fashion design");
-			$('#services h4').eq(1).html("Production");
-			$('#services h4').eq(2).html("Quality and punctuality");
+			$('#services h4').eq(0).html("<i class='fa fa-desktop'></i> Fashion design");
+			$('#services h4').eq(1).html("<i class='fa fa-search'></i> Production");
+			$('#services h4').eq(2).html("<i class='fa fa-bullhorn'></i> Quality and punctuality");
 		
 			$('#services p').eq(0).html("We have a Design department whose members are specialists who analyze market trends to launch new clothing collections that can give our clients the chance of selling innovative designs.");
-			$('#services p').eq(1).html("We have a monthly production capacity of 30000 garments in different fashion designs to guarantee our customers a prompt response to their needs.");
+			$('#services p').eq(1).html("We have a monthly production capacity of 30,000 garments in different fashion designs to guarantee our customers a prompt response to their needs.");
 			$('#services p').eq(2).html("We keep stringent control of all of our production processes, and we have filters that help us obtain high-quality products. Most importantly, our experience in the planning of the production flow always makes our customers feel satisfied with our work.");
 		
 			$('#portfolio h3').html("Customers");
@@ -145,13 +144,16 @@
 			$('#contact h5').html("WOULD YOU LIKE TO CONTACT US?");
 			$('#contact p').eq(0).html("Fill out the following form if you have any questions and we will pleased to assist you.");
 			
-
+            $("a[data-original-title='Sígueme en Facebook']").attr({ title: "Follow me on Facebook" });
+			//Modo antiguo-2
+			/*$(".wrap-about h3").text("About us");
             $("h3:contains('Nuestros Servicios')").text("Services");
             $("h3:contains('Clientes')").text("Customers");
             $("h3:contains('Contáctanos')").text("Contact");
-            $("h4:contains(' Información de Contacto ')").text(" Contact Information ");
-            $("h5:contains(' ¿Deseas contactarte con nosotros? ')").text(" Would you like to contact us? ");
-            $("#contact_text").text("Fill out the following form if you have any questions and we will pleased to assist you."); $("label[for='name']").text("Nombre / Compañia:");
+            $("h4:contains(' Información de Contacto ')").text("CONTACT INFORMATION");
+            $("h5:contains(' ¿Deseas contactarte con nosotros? ')").text("WOULD YOU LIKE TO CONTACT US?");
+            $("#contact_text").text("Fill out the following form if you have any questions and we will pleased to assist you.");*/
+			$("label[for='name']").text("Nombre / Compañia:");
             $("label[for='name']").text("Name / Company:");
             $("input[id='name']").attr("placeholder","Enter Name / Company:");
             $("label[for='email']").text("Email:");
@@ -164,7 +166,7 @@
             $("input[id='msg']").attr("placeholder", "Enter Message:");
             $(":submit").text("Submit");
             $(".fa.fa-clock-o ").parent().html("<i class='fa fa-clock-o'></i> Mon - Fri: 9:00am &rarr; 5:30pm <br>Sat: 10:00am &rarr; 2:30pm <br>Sunday: Closed");
-            $("#brand-and-copy p").html("© 2018 Natcom Systems. All rights reserved. HTML5-CSS3 Template by <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
+            $("#brand-and-copy p").html("© 2020 Natcom Systems. All rights reserved. HTML5-CSS3 Template by <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
             /*$("#spanish").contents().filter(function(){
               return this.nodeType == Node.TEXT_NODE;
             })[0].nodeValue = " Español";
@@ -219,7 +221,7 @@
               </div>
               <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                  <li><a id="nav_about" href="#about-1">About</a></li>
+                  <li><a id="nav_about" href="#about-1">About us</a></li>
                   <li><a id="nav_services" href="#services">Services</a></li>
                   <li><a id="nav_catalogue" href="sicweb/catalogue/catalogue">Catalogue</a></li>
                   <li><a id="nav_portfolio" href="#portfolio">Customers</a></li>
@@ -249,9 +251,8 @@
            <div>
             <div class="about col-sm-6">
               <div class="wrap-about">
-                <h3>About</h3>
-                <p>
-                </p>
+                <h3>About us</h3>
+                <p>M&S PIMA COTTON is a family-run business. By the time we embarked on this project, back in 2014, we already had 15 years of experience working in the textile industry.</p>
                 <ul class="social-account container-fluid">
                   <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a></address></li>
 				  <!--
@@ -283,8 +284,7 @@
             <div class="about col-sm-6"><img class="img-responsive" src="img/FOTO DE PORTADA 4.jpeg" alt="" /></div>
             <div class="about col-sm-6">
               <div class="wrap-about">
-                <p>
-                </p>
+                <p>Having gained formative experience by working at San Cristobal and Nettalco Textile Company, we decided to set up our own project as M&S PIMA COTTON. In the same year we came into commercial operation, we started to export our products to one of the main export markets, United States.</p>
               </div>
             </div>
           </div>
@@ -301,9 +301,9 @@
             <h3 class="text-center">Services</h3>
             <div>
                 <div class="col-sm-12">
-                    <div class="about col-sm-4">
+                    <div class="about col-sm-4">					
                         <!--TODO: falta agregar servicios reales de myspima-->
-                        <h4 class="text-center text-uppercase"><i class="fa fa-desktop"></i> Web Design</h4>
+                        <h4 class="text-center text-uppercase"><i class="fa fa-desktop"></i> Fashion design</h4>
                         <div class="easy-pie-chart" data-percent="100">
                             <span>100<sup>%</sup></span>
                         </div>
@@ -314,7 +314,7 @@
                     </div>
                     <div class="about col-sm-4">
                         <!--TODO: falta agregar servicios reales de myspima-->
-                        <h4 class="text-center text-uppercase"><i class="fa fa-search"></i> SEO</h4>
+                        <h4 class="text-center text-uppercase"><i class="fa fa-search"></i> Production</h4>
                         <div class="easy-pie-chart" data-percent="100">
                             <span>100<sup>%</sup></span>
                         </div>
@@ -325,7 +325,7 @@
                     </div>
                     <div class="about col-sm-4">
                         <!--TODO: falta agregar servicios reales de myspima-->
-                        <h4 class="text-center text-uppercase"><i class="fa fa-bullhorn"></i> Web Marketing</h4>
+                        <h4 class="text-center text-uppercase"><i class="fa fa-bullhorn"></i> Quality and punctuality</h4>
                         <div class="easy-pie-chart" data-percent="100">
                             <span>100<sup>%</sup></span>
                         </div>
@@ -516,7 +516,7 @@
             <!-- Brand & Copyright -->
             <div id="brand-and-copy" class="col-xs-12">
                 <!--<p id="brand" class="logo"><span>A</span>mbixo</p>-->
-                <p>© 2018 Natcom Systems. All rights reserved. HTML5-CSS3 Template by <a href="http://www.martinasepi.it" target="_blank">Martina Sepi</a></p>
+                <p>© 2020 Natcom Systems. All rights reserved. HTML5-CSS3 Template by <a href="http://www.martinasepi.it" target="_blank">Martina Sepi</a></p>
             </div>
         </div>
     </section>
@@ -538,7 +538,7 @@
                         <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@myspimacotton.pe</a></li>
                         <li><i class="fa fa-envelope"></i> <a href="mailto:#">sortiz@indumet.pe</a></li>
                         <!--TODO: Falta poner el skype-->
-                        <!--<li><i class="fa fa-skype"></i> Ambixo</li>-->-->
+                        <!--<li><i class="fa fa-skype"></i> Ambixo</li>-->
                     </ul>
                     <ul class="col-xs-4">
                         <li>
