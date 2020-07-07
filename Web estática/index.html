@@ -15,7 +15,7 @@
     <script src="js/portfolio/modernizr.custom.js"></script>
     <!-- <script src="js/testimonial/jquery.quovolver.min.js"></script> -->
     <!-- Favicons -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon.png">
     <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/apple-touch-icon-60x60.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72.png">
@@ -60,6 +60,8 @@
 		
 			$("#about-2 p").html("Habiendo adquirido experiencia formativa trabajando en las empresas textiles San Cristóbal y Nettalco, decidimos establecer nuestro propio proyecto como M&S PIMA COTTON. En el mismo año que iniciamos operaciones comerciales, comenzamos a exportar nuestros productos a uno de los principales mercados de exportación, Estados Unidos.");
 			
+			$("#parallax-1 p").html("Moda");
+			
 			$("#services h3").html("Nuestros Servicios");
 			$('#services h4').eq(0).html("<i class='fa fa-desktop'></i> Diseño y Moda");
 			$('#services h4').eq(1).html("<i class='fa fa-search'></i> Producción");
@@ -69,7 +71,12 @@
 			$('#services p').eq(1).html("Tenemos una capacidad de producción mensual de 30,000 prendas en diferentes diseños de moda para garantizar a nuestros clientes una pronta respuesta a sus necesidades.");
 			$('#services p').eq(2).html("Mantenemos un estricto control de todos nuestros procesos de producción, y tenemos filtros que nos ayudan a obtener productos de alta calidad. Lo más importante, nuestra experiencia en la planificación del flujo de producción siempre hace que nuestros clientes se sientan satisfechos con nuestro trabajo.");
 		
+			$('#parallax-2 p').html("Style");
+		
 			$("#portfolio h3").html("Clientes");
+			
+			$('#portfolio p').eq(0).html("Algunos de nuestros clientes son:");
+			$('#portfolio p').eq(1).html("Todos los logotipos o imágenes son marcas registradas de sus respectivos propietarios.");
 		
 			$("#contact h3").html("Contáctanos");
 			$('#contact h4').html("INFORMACIÓN DE CONTACTO");
@@ -127,6 +134,8 @@
 			$("#about-1 p").html("M&S PIMA COTTON is a family-run business. By the time we embarked on this project, back in 2014, we already had 15 years of experience working in the textile industry.");
 		
 			$("#about-2 p").html("Having gained formative experience by working at San Cristobal and Nettalco Textile Company, we decided to set up our own project as M&S PIMA COTTON. In the same year we came into commercial operation, we started to export our products to one of the main export markets, United States.");
+			
+			$("#parallax-1 p").html("Fashion");
 		
 			$("#services h3").html("Services");
 		
@@ -138,11 +147,16 @@
 			$('#services p').eq(1).html("We have a monthly production capacity of 30,000 garments in different fashion designs to guarantee our customers a prompt response to their needs.");
 			$('#services p').eq(2).html("We keep stringent control of all of our production processes, and we have filters that help us obtain high-quality products. Most importantly, our experience in the planning of the production flow always makes our customers feel satisfied with our work.");
 		
+			$('#parallax-2 p').html("Style");
+			
 			$('#portfolio h3').html("Customers");
+			
+			$('#portfolio p').eq(0).html("Some of our customers are:");
+			$('#portfolio p').eq(1).html("All logos or images are trademarks of their respective owners");
 		  
 			$('#contact h3').html("Contact");
-			$('#contact h4').html("CONTACT INFORMATION");
-			$('#contact h5').html("WOULD YOU LIKE TO CONTACT US?");
+			$('#contact h4').html("Contact Information");
+			$('#contact h5').html("would you like to contact us?");
 			$('#contact p').eq(0).html("Fill out the following form if you have any questions and we will pleased to assist you.");
 			
             $("a[data-original-title='Sígueme en Facebook']").attr({ title: "Follow me on Facebook" });
@@ -190,10 +204,10 @@
 <body data-spy="scroll" data-target=".header">
     <header>
         <div id="header" class="header" style="border-top: 60px solid #322e2f;">
-        <div class="container" style="background-color:white;">
+        <div id="header_container" class="container" style="background-color:white;">
 		<!-- <img src="img/logo.png" alt="img01"/> -->
 		<!-- <h1 class="logo"><a href="#"><span>M</span>&<span class="S">S</span></a> Pima Cotton sac</h1> -->
-          <h1 class="logo" align="center" style="margin-bottom: 5px"><img width="60%" height="60%" src="img/logo.png" alt="img01"/></h1>
+          <h1 id="logo" class="logo" align="center" style="margin-bottom: 5px"><img width="60%" height="60%" src="img/logo.png" alt="img01"/></h1>
           <h2 class="tagline hidden-xs"><!--<span>HTML5</span> Parallax <span>One Page</span> Portfolio <span>Responsive</span> Template--></h2>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -208,7 +222,7 @@
 				</li>
 			</ul>
         </div>
-        <a href="#about" class="sr-only">Skip to main content</a>
+        <!-- <a href="#about" class="sr-only">Skip to main content</a> -->
         <nav id="main-nav">
           <div class="navbar navbar-default" role="navigation">
             <div class="container">
@@ -235,11 +249,16 @@
             </div>
           </div>
         </nav>
-      </div>
+		</div>
         <!-- <svg class="decor" height="100" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 100 L100 0 L0 0" stroke-width="0"></path>
         </svg> -->
+		<!-- <a class="btn btn-primary" data-toggle="collapse" href="#header" role="button" aria-expanded="true" aria-controls="header">
+		   test
+		</a> -->
+		
     </header>
+	
     <section id="main-img">
         <img class="img-responsive" src="img/prueba_main.jpg" alt="">
         <!--<img class="img-responsive" src="img/paisaje_prueba.jpg" alt="">-->
@@ -255,7 +274,7 @@
                 <h3>About us</h3>
                 <p>M&S PIMA COTTON is a family-run business. By the time we embarked on this project, back in 2014, we already had 15 years of experience working in the textile industry.</p>
                 <ul class="social-account container-fluid">
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a></address></li>
+                  <!-- <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a></address></li> -->
 				  <!--
                   <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Google+"><i class="fa fa-google-plus"></i></a></address></li>
                   <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a></address></li>
@@ -268,7 +287,7 @@
                   <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow me on Dribbble"><i class="fa fa-dribbble"></i></a></address></li>
                   <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="Follow my Feeds"><i class="fa fa-rss"></i></a></address></li>
 				  -->
-                  <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="My e-mail"><i class="fa fa-envelope-o"></i></a></address></li>
+                  <!-- <li><address><a class="tool" data-placement="bottom" rel="me" href="#" title="My e-mail"><i class="fa fa-envelope-o"></i></a></address></li> -->
                  </ul>
               </div>
             </div>
@@ -294,7 +313,7 @@
     </section>
     <!-- Parallax 1 -->
     <section id="parallax-1" class="container-fluid parallax fixed" style="background-image: url(img/parallax/1.jpg)">
-        <p class="parallax-text">Just for Ambitious</p>
+        <p class="parallax-text">Fashion</p>
     </section>
     <!-- Services -->
     <section id="services" class="section-page">
@@ -304,17 +323,17 @@
                 <div class="col-sm-12">
                     <div class="about col-sm-4">					
                         <!--TODO: falta agregar servicios reales de myspima-->
-                        <h4 class="text-center text-uppercase"><i class="fa fa-desktop"></i> Fashion design</h4>
+                        <h4 class="text-center text-uppercase"><i class="fa fa-pencil-square-o"></i> Fashion design</h4>
                         <div class="easy-pie-chart" data-percent="100">
                             <span>100<sup>%</sup></span>
                         </div>
                         <p class="text-center">
-                            We have a Design department whose members are specialists who analyze market trends to launch new clothing collections that can give our clients the chance of selling innovative designs.
+                            We have a Design department whose members are specialists who analyze market trends to launch new clothing collections that can give our clients the chance of selling <b>innovative designs.</b>
                         </p>
                     </div>
                     <div class="about col-sm-4">
                         <!--TODO: falta agregar servicios reales de myspima-->
-                        <h4 class="text-center text-uppercase"><i class="fa fa-search"></i> Production</h4>
+                        <h4 class="text-center text-uppercase"><i class="fa fa-gears"></i> Production</h4>
                         <div class="easy-pie-chart" data-percent="100">
                             <span>100<sup>%</sup></span>
                         </div>
@@ -324,12 +343,12 @@
                     </div>
                     <div class="about col-sm-4">
                         <!--TODO: falta agregar servicios reales de myspima-->
-                        <h4 class="text-center text-uppercase"><i class="fa fa-bullhorn"></i> Quality and punctuality</h4>
+                        <h4 class="text-center text-uppercase"><i class="fa fa-star"></i> <i class="fa fa-calendar-check-o"></i> Quality and punctuality</h4>
                         <div class="easy-pie-chart" data-percent="100">
                             <span>100<sup>%</sup></span>
                         </div>
                         <p class="text-center">
-                            We keep stringent control of all of our production processes, and we have filters that help us obtain high-quality products. Most importantly, our experience in the planning of the production flow always makes our customers feel satisfied with our work.
+                            We keep stringent control of all of our production processes, and we have filters that help us obtain high-quality products. Most importantly, our experience in the planning of the production flow <b>always makes our customers feel satisfied with our work</b>.
                         </p>
                     </div>
                 </div>
@@ -338,13 +357,13 @@
     </section>
     <!-- Parallax 2 -->
     <section id="parallax-2" class="container-fluid parallax fixed" style="background-image: url(img/parallax/2.jpg)">
-        <p class="parallax-text">Usable</p>
+        <p class="parallax-text">Style</p>
     </section>
     <!-- Portfolio -->
     <section id="portfolio" class="section-page">
         <div class="container">
           <h3 class="text-center">Customers</h3>
-          <!--<p class="text-center">All brand icons are trademarks of their respective owners</p>-->
+          <p class="text-center">Some of our customers are:</p>
 
           <ul id="og-grid" class="og-grid">
             <li>
@@ -424,7 +443,7 @@
               </a>
             </li> -->
           </ul>
-
+		<p class="text-center">All brand logos or images are trademarks of their respective owners</p>
         </div>
     </section>
     <!-- Parallax Google Maps -->
@@ -437,13 +456,11 @@
         <div class="container">
             <h3 class="text-center">Contact</h3>
             <div class="col-sm-12">
-                <h4 class="text-left text-uppercase"> Contact Information </h4>
+                <h4 class="text-left text-uppercase">Contact Information</h4>
                 <!-- Deseas comunicarte con nosotros? -->
-                <h5 class="text-left text-uppercase"> Would you like to contact us? </h5>
+                <h5 class="text-left text-uppercase">Would you like to contact us?</h5>
                 <!-- Rellene el siguiente formulario si tiene alguna consulta y gustosamente lo atenderemos. -->
-                <p id="contact_text">
-                    Fill out the following form if you have any questions and we will pleased to assist you.
-                </p>
+                <p id="contact_text"> Fill out the following form if you have any questions and we will pleased to assist you.</p>
                 <br>
                 <form class="form-horizontal">
                     <div class="form-group">
@@ -473,7 +490,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="msg">Message:</label>
                         <div class="col-sm-8">
-                            <input type="msg" class="form-control" id="msg" placeholder="Enter password">
+                            <input type="msg" class="form-control" id="msg" placeholder="Enter Message">
                         </div>
                     </div>
                     <!--<div class="form-group">
