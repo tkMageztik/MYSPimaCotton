@@ -45,6 +45,8 @@
         });
 
         function spanish(){
+			Grid.hidePreview();
+		
             $("#nav_about").text("Sobre Nosotros");
             $("#nav_services").text("Nuestros Servicios");
             $("#nav_catalogue").text("Catálogo");
@@ -73,10 +75,10 @@
 		
 			$('#parallax-2 p').html("Style");
 		
-			$("#portfolio h3").html("Clientes");
+			$("#portfolio h3").eq(0).html("Clientes");
 			
 			$('#portfolio p').eq(0).html("Algunos de nuestros clientes son:");
-			$('#portfolio p').eq(1).html("Todos los logotipos o imágenes son marcas registradas de sus respectivos propietarios.");
+			$('#bl_disclaimer').html("Todos los logotipos o imágenes son marcas registradas de sus respectivos propietarios.");
 		
 			$("#contact h3").html("Contáctanos");
 			$('#contact h4').html("INFORMACIÓN DE CONTACTO");
@@ -98,15 +100,15 @@
             $("#contact_text").text("Llena el siguiente formulario si tienes alguna pregunta que estaremos felices de atenderte.");*/
 			
             $("label[for='name']").text("Nombre / Compañia:");
-            $("input[id='name']").attr("placeholder", "Ingresa el/la Nombre / Compañia:");
+            $("input[id='name']").attr("placeholder", "Ingresa el/la Nombre / Compañia");
             $("label[for='email']").text("Correo:");
-            $("input[id='email']").attr("placeholder", "Ingresa el Correo:");
-            $("label[for='subject']").text("Asunto:");
-            $("input[id='subject']").attr("placeholder", "Ingresa el Asunto:");
+            $("input[id='email']").attr("placeholder", "Ingresa el Correo");
+            $("label[for='subject']").text("Asunto");
+            $("input[id='subject']").attr("placeholder", "Ingresa el Asunto");
             $("label[for='phone']").text("Teléfono / Celular:");
-            $("input[id='phone']").attr("placeholder", "Ingresa el Teléfono / Celular:");
+            $("input[id='phone']").attr("placeholder", "Ingresa el Teléfono / Celular");
             $("label[for='msg']").text("Mensaje:");
-            $("input[id='msg']").attr("placeholder", "Ingresa el Mensaje:");
+            $("input[id='msg']").attr("placeholder", "Ingresa el Mensaje");
             $(":submit").text("Enviar");
             $(".fa.fa-clock-o ").parent().html("<i class='fa fa-clock-o'></i> Lun - Vie: 9:00am &rarr; 5:30pm <br>Sáb: 10:00am &rarr; 2:30pm <br>Domingo: Cerrado");
             $("#brand-and-copy p").html("© 2020 Natcom Systems. Todos los derechos reservados. Plantilla HTML5-CSS3 creada por <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
@@ -117,9 +119,12 @@
             $("#english").contents().filter(function(){
               return this.nodeType == Node.TEXT_NODE;
             })[0].nodeValue = " English";*/
+			Grid.changeCustomerText('es');
         }
 
         function english(){
+			Grid.hidePreview();
+		
             $("#nav_about").text("About us");
             $("#nav_services").text("Services");
             $("#nav_catalogue").text("Catalogue");
@@ -149,10 +154,10 @@
 		
 			$('#parallax-2 p').html("Style");
 			
-			$('#portfolio h3').html("Customers");
+			$('#portfolio h3').eq(0).html("Customers");
 			
 			$('#portfolio p').eq(0).html("Some of our customers are:");
-			$('#portfolio p').eq(1).html("All brand logos or images are trademarks of their respective owners");
+			$('#bl_disclaimer').html("All brand logos or images are trademarks of their respective owners");
 		  
 			$('#contact h3').html("Contact");
 			$('#contact h4').html("Contact Information");
@@ -170,15 +175,15 @@
             $("#contact_text").text("Fill out the following form if you have any questions and we will pleased to assist you.");*/
 			$("label[for='name']").text("Nombre / Compañia:");
             $("label[for='name']").text("Name / Company:");
-            $("input[id='name']").attr("placeholder","Enter Name / Company:");
+            $("input[id='name']").attr("placeholder","Enter Name / Company");
             $("label[for='email']").text("Email:");
-            $("input[id='email']").attr("placeholder", "Enter Email:");
+            $("input[id='email']").attr("placeholder", "Enter Email");
             $("label[for='subject']").text("Subject:");
-            $("input[id='subject']").attr("placeholder", "Enter Subject:");
+            $("input[id='subject']").attr("placeholder", "Enter Subject");
             $("label[for='phone']").text("Phone / Cellphone:");
-            $("input[id='phone']").attr("placeholder", "Enter Phone / Cellphone:");
+            $("input[id='phone']").attr("placeholder", "Enter Phone / Cellphone");
             $("label[for='msg']").text("Message:");
-            $("input[id='msg']").attr("placeholder", "Enter Message:");
+            $("input[id='msg']").attr("placeholder", "Enter Message");
             $(":submit").text("Submit");
             $(".fa.fa-clock-o ").parent().html("<i class='fa fa-clock-o'></i> Mon - Fri: 9:00am &rarr; 5:30pm <br>Sat: 10:00am &rarr; 2:30pm <br>Sunday: Closed");
             $("#brand-and-copy p").html("© 2020 Natcom Systems. All rights reserved. HTML5-CSS3 Template by <a href='http://www.martinasepi.it' target='_blank'>Martina Sepi</a>");
@@ -189,6 +194,7 @@
             $("#english").contents().filter(function(){
               return this.nodeType == Node.TEXT_NODE;
             })[0].nodeValue = " English";*/
+			Grid.changeCustomerText('en');
         }
 
         function initialize_lang() {
@@ -367,56 +373,56 @@
 
           <ul id="og-grid" class="og-grid">
             <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 1.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="https://www.instagram.com/taquile.peru/" data-largesrc="img/portfolio/cliente 1.jpg" data-title="TAQUILE" data-description="Peruvian brand with export quality, dedicated to designing exclusive models for men and women">
 				<div width="250" height="250" style="background-color:white;">
 					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 1.jpg" alt="img01"/>
 				</div>
               </a>
             </li>
             <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 2.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="#" data-largesrc="img/portfolio/cliente 2.jpg" data-title="" data-description="">
 				<div width="250" height="250" style="background-color:white;">
 					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 2.jpg" alt="img02"/>
 				</div>
               </a>
             </li>
             <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 3.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="#" data-largesrc="img/portfolio/cliente 3.jpg" data-title="" data-description="">
 				<div width="250" height="250" style="background-color:white;">					
 					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 3.jpg" alt="img03"/>
 				</div>
               </a>
             </li>
             <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 4.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="#" data-largesrc="img/portfolio/cliente 4.jpg" data-title="" data-description="">
 				<div width="250" height="250" style="background-color:white;">
 					<img width="250" height="250" style="padding:100px 25px 100px 25px;" src="img/portfolio/thumbs/cliente 4.jpg" alt="img01"/>
 				</div>
               </a>
             </li>
             <li>
-              <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="img/portfolio/cliente 5.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="#" data-largesrc="img/portfolio/cliente 5.jpg" data-title="" data-description="">
 				<div width="250" height="250" style="background-color:white;">
 					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 5.jpg" alt="img02"/>
 				</div>
               </a>
             </li>
             <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 6.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="#" data-largesrc="img/portfolio/cliente 6.jpg" data-title="" data-description="">
 				<div width="250" height="250" style="background-color:white;">
 					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 6.jpg" alt="img03"/>
 				</div>
               </a>
             </li>
             <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 7.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="#" data-largesrc="img/portfolio/cliente 7.jpg" data-title="" data-description="">
 				<div width="250" height="250" style="background-color:white;">
 					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 7.jpg" alt="img01"/>
 				</div>
               </a>
             </li>
             <li>
-              <a href="#" data-largesrc="img/portfolio/cliente 8.jpg" data-title="Single Project" data-description="Pellentesque nibh felis, eleifend id, commodo in, interdum vitae, leo. Praesent eu elit. Ut eu ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas elementum augue nec nisl. Proin auctor lorem at nibh.">
+              <a href="#" data-largesrc="img/portfolio/cliente 8.jpg" data-title="" data-description="">
 				<div width="250" height="250" style="background-color:white;">
 					<img width="250" height="250" style="padding:25px;" src="img/portfolio/thumbs/cliente 8.jpg" alt="img02"/>
 				</div>
@@ -443,7 +449,7 @@
               </a>
             </li> -->
           </ul>
-		<p class="text-center">All brand logos or images are trademarks of their respective owners</p>
+		<p id="bl_disclaimer" class="text-center">All brand logos or images are trademarks of their respective owners</p>
         </div>
     </section>
     <!-- Parallax Google Maps -->

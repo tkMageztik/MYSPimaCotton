@@ -344,10 +344,26 @@ var Grid = (function() {
 			// create Preview structure:
 			this.$title = $( '<h3></h3>' );
 			this.$description = $( '<p></p>' );
-			this.$href = $( '<a href="#">Visit website</a>' );
-			this.$details = $( '<div class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+			
+			/*Comenté el botón de website*/
+			//this.$href = $( '<a href="#">Visit website a</a>' );
+			this.$href = $( '<a class="fa fa-instagram" target="_blank"> Instagram</a>' );
+			
 			this.$loading = $( '<div class="og-loading"></div>' );
-			this.$fullimage = $( '<div class="og-fullimg"></div>' ).append( this.$loading );
+			
+			if(this.$item.children( 'a' ).data( 'description' ) === ''){
+				
+				this.$details = $( '<div id="og-details" class="og-details" style="display:none;"></div>' ).append( this.$title, this.$description, this.$href );
+				this.$fullimage = $( '<div id="og-fullimg" class="og-fullimg-n"></div>' ).append( this.$loading );
+	
+			}
+			else{
+				
+				this.$details = $( '<div id="og-details" class="og-details"></div>' ).append( this.$title, this.$description, this.$href );
+				this.$fullimage = $( '<div id="og-fullimg" class="og-fullimg"></div>' ).append( this.$loading );
+				
+			}
+			
 			this.$closePreview = $( '<span class="og-close"></span>' );
 			this.$previewInner = $( '<div class="og-expander-inner"></div>' ).append( this.$closePreview, this.$fullimage, this.$details );
 			this.$previewEl = $( '<div class="og-expander"></div>' ).append( this.$previewInner );
@@ -369,13 +385,23 @@ var Grid = (function() {
 				var $currentItem = $items.eq( current );
 				$currentItem.removeClass( 'og-expanded' );
 				this.$item.addClass( 'og-expanded' );
+				
+				if(this.$item.children( 'a' ).data( 'description' ) === ''){
+					
+					$('#og-fullimg').attr('class','og-fullimg-n');
+				}
+				else{
+					
+					$('#og-details').attr('style','display:inline');
+					$('#og-fullimg').attr('class','og-fullimg');
+					
+				}
 				// position the preview correctly
 				this.positionPreview();
 			}
 
 			// update current value
 			current = this.$item.index();
-
 			// update preview´s content
 			var $itemEl = this.$item.children( 'a' ),
 				eldata = {
@@ -506,10 +532,33 @@ var Grid = (function() {
 			return this.$previewEl;
 		}
 	}
+	
+	function externalHidePreview (){
+		
+		if (current !== -1)
+			hidePreview()
+		
+		return false;
+	}
+	
+	function changeCustomerText(lang){
+		
+		if (lang === 'es'){
+			$items.eq(0).children( 'a' ).data( 'description','Marca peruana con calidad de exportación, dedicada a diseñar modelos exclusivos para damas y caballeros.')
+			//$items.eq(1).children( 'a' ).data( 'description','b')
+		}else{
+			
+			$items.eq(0).children( 'a' ).data( 'description','Peruvian brand with export quality, dedicated to designing exclusive models for men and women.')
+			//$items.eq(1).children( 'a' ).data( 'description','b1')
+		}
+	}
+	
 
 	return { 
 		init : init,
-		addItems : addItems
+		addItems : addItems,
+		hidePreview : externalHidePreview,
+		changeCustomerText : changeCustomerText
 	};
 
 })();

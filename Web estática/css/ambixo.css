@@ -539,6 +539,20 @@ section#about-2 .container {
 	position: relative;
 }
 
+.og-fullimg-n {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	
+}
+
+.og-fullimg-n img {
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+}
+
 .og-details {
 	padding: 0 40px 0 20px;
 }
