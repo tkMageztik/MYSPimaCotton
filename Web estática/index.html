@@ -10,9 +10,15 @@
     <link href="css/ambixo.css" rel="stylesheet">
     <!-- Script -->
     <script src="js/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+	<script src="https://code.jquery.com/jquery-migrate-3.3.1.js"></script> -->
     <!-- <script src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
     <script src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script> -->
     <script src="js/portfolio/modernizr.custom.js"></script>
+	
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+	
     <!-- <script src="js/testimonial/jquery.quovolver.min.js"></script> -->
     <!-- Favicons -->
     <!-- <link rel="shortcut icon" href="favicon.ico"> -->
@@ -36,15 +42,167 @@
     <!-- Font Awesome -->
     <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
 	<script src="https://use.fontawesome.com/1b56008d14.js"></script>
-
+	
     <script>
+		
         $(document).ready(function() {
-            // executes when HTML-Document is loaded and DOM is ready
-            //initialize_lang();
-            //english();
+			// executes when HTML-Document is loaded and DOM is ready
+			//initialize_lang();
+			//english();
+			
+			
+			var $loading = $('#loadingDiv').hide();
+			
         });
+		
+		$(document).ajaxStart(function () { $('#loadingDiv').show(); }).ajaxStop(function () { $('#loadingDiv').hide(); });
+		
+		function customValidityOldBrowsers(){
+		
+			/*el primero no sé para que es... .
+			alert(!document.forms[0].checkValidity);
+			alert(document.forms[0].checkValidity());*/
+			var lang = $("#selLang").attr("alt");
+			
+			if(!$('#name')[0].checkValidity()){
 
-        function spanish(){
+				$("#name").popover('destroy');
+				$('#name').popover({
+					placement:'right',
+					trigger:'manual',
+					html:true,
+					content: lang == "English" ? "The field name/company is empty" : "El campo nombre/compañía está vacío"
+				});
+				$('#name').popover('show');
+				setTimeout(function () { $('#name').popover('hide'); }, 4000);
+					
+				return false;
+			}
+			
+			if(!$('#email')[0].checkValidity()){
+			
+				$("#email").popover('destroy');
+				$('#email').popover({
+					placement:'right',
+					trigger:'manual',
+					html:true,
+					content: lang == "English" ? "The field email is empty or is not valid" : "El campo email está vacío o no es válido"
+				});
+				$('#email').popover('show');
+				setTimeout(function () { $('#email').popover('hide');}, 4000);
+				return false;
+			}
+			
+			if(!$('#subject')[0].checkValidity()){
+			
+				$("#subject").popover('destroy');
+				$('#subject').popover({
+					placement:'right',
+					trigger:'manual',
+					html:true,
+					content: lang == "English" ? "The field subject is empty" : "El campo asunto está vacío"
+				});
+				$('#subject').popover('show');
+				setTimeout(function () { $('#subject').popover('hide');}, 4000);
+				return false;
+			}
+			
+			if(!$('#msg')[0].checkValidity()){
+			
+				$('#msg').popover('destroy');
+				$('#msg').popover({
+					placement:'right',
+					trigger:'manual',
+					html:true,
+					content: lang == "English" ? "The field message is empty" : "El campo mensaje está vacío"
+				});
+				$('#msg').popover('show');
+				setTimeout(function () { $('#msg').popover('hide');}, 4000);
+				return false;
+			}
+			return true
+		}
+		
+		function sendEmail(){
+					
+			try {
+				/* var lang = $("#selLang").attr("alt");
+				
+				var name = lang == "English" ? "The field name/company is empty" : "El campo nombre/compañía está vacío";
+				var email = lang == "English" ? "The field email is empty or is not valid" : "El campo email está vacío o no es válido";
+				var subject = lang == "English" ? "The field subject is empty" : "El campo asunto está vacío";
+				var msg = lang == "English" ? "The field message is empty" : "El campo mensaje está vacío";
+				
+				document.getElementById('name').setCustomValidity("ee");
+				document.getElementById('email').setCustomValidity(email);
+				document.getElementById('subject').setCustomValidity(subject);
+				document.getElementById('msg').setCustomValidity(msg); */
+				
+				var validForm = document.forms[0].reportValidity()
+			}
+			catch (e){ //for browsers that don't support reportValidity
+				
+				validForm = customValidityOldBrowsers();
+			}
+			//finally { return false; }
+			
+			if (!validForm) return false;
+			
+			var email = { Channel: "NS",
+			Email:{
+				ToEmail: "jujex_90@hotmail.com", From: $("input[id='name']").val() + " - Mensaje desde página web M&SPIMACOTTON", FromEmail: $("input[id='email']").val(), 
+				FromNumber: $("input[id='phone']").val(), Subject: $("input[id='subject']").val(), Body: $("input[id='msg']").val(), 
+				}
+			};
+
+			var jsonEmail = JSON.stringify(email);
+			$.ajax({
+				url: "https://nsemailserver.azurewebsites.net/api/SendEmail/",
+				//url: "https://localhost:44371/api/SendEmail/",
+				headers: { 
+					"Accept": "application/json",
+					"Content-Type": "application/json"
+				},
+				type: "POST",
+				data: jsonEmail,
+				datatype: "application/json",
+				success: function(result) 
+				{
+					//$( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+					var lang = $("#selLang").attr("alt");
+					
+					if(result.includes("OK"))
+					{
+						if(lang === "English")
+						{
+							alert("Message sent succesfully");
+						}
+						else
+						{
+							alert("Mensaje enviado correctamente");
+						}
+						
+						$("input[id='name']").val(""); $("input[id='email']").val(""); $("input[id='phone']").val("");
+						$("input[id='subject']").val(""); $("input[id='msg']").val("");
+						
+					}else
+						{
+							if(lang === "English")
+							{
+								alert("Message not sent, please try again later");
+							}
+							else
+							{
+								alert("Mensaje no enviado, por favor intente más tarde");
+							}
+						}
+				}
+			});
+
+		}
+
+        function spanish() {
+
 			Grid.hidePreview();
 		
             $("#nav_about").text("Sobre Nosotros");
@@ -208,6 +366,7 @@
     </script>
 </head>
 <body data-spy="scroll" data-target=".header">
+<div id="loadingDiv" class="spinner"></div>
     <header>
         <div id="header" class="header" style="border-top: 60px solid #322e2f;">
         <div id="header_container" class="container" style="background-color:white;">
@@ -468,23 +627,23 @@
                 <!-- Rellene el siguiente formulario si tiene alguna consulta y gustosamente lo atenderemos. -->
                 <p id="contact_text"> Fill out the following form if you have any questions and we will pleased to assist you.</p>
                 <br>
-                <form class="form-horizontal">
+                <form id="test" class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="name">Name / Company:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="name" placeholder="Enter Name / Company">
+                            <input required type="text" class="form-control" id="name" placeholder="Enter Name / Company">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email">Email:</label>
                         <div class="col-sm-8">
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                            <input required type="email" class="form-control" id="email" placeholder="Enter Email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="subject">Subject:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="subject" placeholder="Enter Subject">
+                            <input required type="text" class="form-control" id="subject" placeholder="Enter Subject">
                         </div>
                     </div>
                     <div class="form-group">
@@ -496,7 +655,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="msg">Message:</label>
                         <div class="col-sm-8">
-                            <input type="msg" class="form-control" id="msg" placeholder="Enter Message">
+                            <input required type="msg" class="form-control" id="msg" placeholder="Enter Message">
                         </div>
                     </div>
                     <!--<div class="form-group">
@@ -508,7 +667,7 @@
                     </div>-->
                     <div class="form-group">
                         <div class="col-sm-offset-3">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="button" onclick="sendEmail()" class="btn btn-default">Submit</button>
                         </div>
                     </div>
                 </form>

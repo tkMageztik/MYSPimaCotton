@@ -553,12 +553,57 @@ var Grid = (function() {
 		}
 	}
 	
+	function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+	
+function test(){
+	
+	$.ajax({
+		//url:"smtp.sendgrid.net",
+		url:"https://api.sendgrid.com/v3/mail/send HTTP/1.1",
+		headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+		crossDomain: true,
+		type:"POST",
+		xhrFields: {
+                withCredentials: true
+            },
+            data: {
+                username : 'azure_e2a97571abc7ea1b2189e3002f896ff2@azure.com',
+                password : 'RlU54Xk2D3gz33L'
+            },
+		success: function(result){ alert('bien'); },
+	error: function(error){ alert('mal'); }})
+	
+	/*Email.send({
+    Host : "smtp.sendgrid.net",
+    Username : "d5Ev7OzmSW26NPHg2N6jJQ",
+    Password : "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",
+    To : 'jujex_90@hotmail.com',
+    From : "jujex_90@hotmail.com",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);*/
+		
+}
 
 	return { 
 		init : init,
 		addItems : addItems,
 		hidePreview : externalHidePreview,
-		changeCustomerText : changeCustomerText
+		changeCustomerText : changeCustomerText,
+		test : test
 	};
 
 })();
