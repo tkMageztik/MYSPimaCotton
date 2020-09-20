@@ -150,15 +150,21 @@
 			
 			var email = { Channel: "NS",
 			Email:{
-				ToEmail: "sortiz@myspimacotton.pe", From: $("input[id='name']").val() + " - Mensaje desde página web M&SPIMACOTTON", FromEmail: $("input[id='email']").val(), 
-				FromNumber: $("input[id='phone']").val(), Subject: $("input[id='subject']").val(), Body: $("input[id='msg']").val(), 
+				ToEmail: "jujex_90@hotmail.com", From: "Mensaje desde página web M&SPIMACOTTON de: " + $("input[id='name']").val(), FromEmail: $("input[id='email']").val(), 
+				FromNumber: $("input[id='phone']").val(), Subject: $("input[id='subject']").val(),
+				Body: "Datos ingresados:<br>"+
+				"Nombre/Compañia: "+$("input[id='name']").val() +"<br>"+
+				"Correo: "+$("input[id='email']").val() +"<br>"+
+				"Asunto: "+$("input[id='subject']").val() +"<br>"+
+				"Teléfono/Celular: "+$("input[id='phone']").val() +"<br>"+
+				"Mensaje: "+$("input[id='msg']").val()
 				}
 			};
 
 			var jsonEmail = JSON.stringify(email);
 			$.ajax({
-				url: "https://nsemailserver.azurewebsites.net/api/SendEmail/",
-				//url: "https://localhost:44371/api/SendEmail/",
+				//url: "https://nsemailserver.azurewebsites.net/api/SendEmail/",
+				url: "https://localhost:44371/api/SendEmail/",
 				headers: { 
 					"Accept": "application/json",
 					"Content-Type": "application/json"
@@ -649,7 +655,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="phone">Phone / Cellphone:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="phone" placeholder="Enter Phone / Cellphone">
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter Phone / Cellphone">
                         </div>
                     </div>
                     <div class="form-group">
